@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        
+    }
+    .khung-luoi {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 10px;
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+    .san-pham {
+        background-color: white;
+        border: 1px solid #eeeeee;
+        padding: 15px;
+        text-align: center;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .san-pham:hover {
+        background-color: rgb(231, 162, 112);
+        box-shadow: 0px 5px 15px rgba(0,0,0,0.5);
+        transform: translate(-5px);
+    }
+    .san-pham img {
+        width: 100%;
+        height: 150px;
+        object-fit: contain;
+    }
+    .san-pham p {
+        margin: 10px 0 15px 0; 
+        font-weight: bold;
+        color: #333333;
+    }
+    .san-pham span {
+        color: chocolate;
+        font-size: 0.9em;
+    }
+    .hop-1 {
+        box-sizing: content-box;
+        width: 300px;
+        padding: 50px;
+        border: 10px solid red;
+        background-color: yellow;
+    }
+    .hop-2 {
+        box-sizing: border-box;
+        width: 300px;
+        padding: 50px;
+        border: 10px solid lightblue;
+        background-color: aqua;
+    }
+    .thanh-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: chocolate;
+        padding: 15px 50px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    .menu-link a {
+        color: white;
+        text-decoration: none;
+        margin-left: 25px;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+    .menu-link a:hover {
+        color: yellow;
+    }
+    .banner {
+        height: 500px;
+        background-image: url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1350&q=80);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.4);
+        }
+        .Banner-noi-dung h1 {
+            color: white;
+            font-size: 50px;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+        .Banner-noi-dung p {
+            color: #f1f1f1;
+            font-size: 25px;
+            margin-bottom: 30px;
+        }
+        .nut-xem-them {
+            padding: 15px 30px;
+            background-color: chocolate;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .nut-xem-them:hover {
+            background-color: white;
+            color: chocolate;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+    .chan-trang {
+        background-color: #222;
+        color: white;
+        padding: 80px 0;
+        margin-top: 50px;
+    }    
+    .khung-footer {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .cot-footer {
+        flex: 1;
+        min-width: 200px;
+    }
+    .cot-footer h3 {
+        background-color: chocolate;
+        margin-bottom: 20px;
+        font-size: 15px;
+    }
+    .cot-footer ul {
+        list-style: none;
+    }
+    .cot-footer ul li a {
+        color: #ccc;
+        text-decoration: none;
+        line-height: 1.5;
+        transition: 0.3;
+    }
+    .cot-footer:hover ul li a {
+        color: white;
+    }
+</style>
+<body>
+    <nav class="thanh-menu">
+        <div class="logo">
+            Logo An Gia
+        </div>
+        <div class="menu-link">
+        <a href="#"> Trang chủ</a>
+        <a href="$"> Sản Phẩn</a>
+        <a href="#"> Công trình</a>
+        <a href="#"> Liên hệ</a>
+        </div>
+        
+    </nav>
+    <div style="
+        background-color: red;
+        color: white;
+        padding: 15px;">
+        GIAO HÀNG NỘI THÀNH 3H. LẮP ĐẶT ĐÚNG CHUẨN. GIÁ TỐT
+    </div>
+    <div class="banner">
+        <div class="Banner-noi-dung">
+            <h1>GẠCH ỐP LÁT AN GIA</h1>
+            <p>Nâng tầm không gian sống của bạn</p>
+            <a href="https://www.facebook.com/myphamthuydung21?locale=vi_VN" class="nut-xem-them">Facebook liên hệ</a>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="khung-luoi">
+        <div class="san-pham">
+            <img src="gach gia go.jpeg" alt="Gạch Giả Gỗ">
+            <p>Gạch Giả Gỗ xịn</p>
+            <span>Giá: Liên hệ</span>
+        </div>
+        <div class="san-pham">
+            <img src="gach san vuon.jpg" alt="Gạch Sân Vườn">
+            <p>Gạch Sân vườn chuẩn</p>
+            <span>Giá: Liên hệ</span>
+        </div>
+        <div class="san-pham">
+            <img src="gach granite.jpg" alt=""Gạch Granite">
+            <p>Gạch Granite</p>
+            <span>Giá: Liên hệ</span>
+        </div>
+        <div class="san-pham">
+            <img src="gach men kc.jpg" alt="Gạch men kim cương">
+            <p>Gạch men kim cương</p>
+            <span>Giá: Liên hệ</span>
+        </div>
+    </div>
+    </div>
+    <footer class="chan-trang">
+    <div class="container khung-footer">
+        <div class="cot-footer">
+            <h3>VỀ AN GIA</h3>
+            <p>Chuyên cung cấp các giải pháp gạch ốp lát cao cấp, mang lại vẻ đẹp bền vững cho mọi công trình.</p>
+        </div>
+
+        <div class="cot-footer">
+            <h3>SẢN PHẨM</h3>
+            <ul>
+                <li><a href="#">Gạch lát nền</a></li>
+                <li><a href="#">Gạch ốp tường</a></li>
+                <li><a href="#">Thiết bị vệ sinh</a></li>
+            </ul>
+        </div>
+
+        <div class="cot-footer">
+            <h3>LIÊN HỆ</h3>
+            <p>Địa chỉ: xxx Nguyễn Khoái - Hà Nội</p>
+            <p>Hotline: 0347776668</p>
+        </div>
+        <div class="cot-footer">
+            <h3>Bản Đồ</h3>
+            <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3724.9992173885807!2d105.89173077599777!3d20.99266848901575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1778467499582!5m2!1svi!2s"
+            width="100%"
+            height="150px"
+            style="border: 0;"
+            allowfullscreen=""
+            loading="lazy"
+            ></iframe>
+
+        </div>
+    </div>
+</footer>
+    
+    
+</body>
+</html>
