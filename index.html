@@ -157,11 +157,69 @@
     .cot-footer:hover ul li a {
         color: white;
     }
+    .khung-tim-kiem {
+        display: flex;
+        background-color: white;
+        border-radius: 25px;
+        padding: 5px;
+        width: 350px;
+        overflow: hidden;
+    }
+    .khung-tim-kiem input {
+        border: none;
+        padding: 8px 15px;
+        outline: none;
+        flex: 1;
+        font-size: 15px;
+    }
+    .khung-tim-kiem button {
+        background-color: chocolate;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .khung-tim-kiem button:hover {
+        background-color: #d32f2f;
+    }
+    /* Khi màn hình nhỏ hơn 900px (Máy tính bảng) */
+@media (max-width: 900px) {
+    .khung-luoi {
+        grid-template-columns: repeat(2, 1fr); /* Giảm xuống còn 2 cột */
+    }
+    
+    .khung-tim-kiem {
+        width: 200px; /* Thu nhỏ thanh tìm kiếm lại cho khỏi chật */
+    }
+}
+
+/* Khi màn hình nhỏ hơn 600px (Điện thoại) */
+@media (max-width: 600px) {
+    .khung-luoi {
+        grid-template-columns: 1fr; /* Chỉ còn 1 cột duy nhất */
+    }
+
+    .thanh-menu {
+        flex-direction: column; /* Xếp Logo, Tìm kiếm và Link theo hàng dọc */
+        gap: 10px;               /* Tạo khoảng cách giữa các hàng */
+    }
+
+    .banner h1 {
+        font-size: 30px;         /* Thu nhỏ chữ tiêu đề cho vừa màn hình điện thoại */
+    }
+}
 </style>
 <body>
     <nav class="thanh-menu">
         <div class="logo">
             Logo An Gia
+        </div>
+        <div class="khung-tim-kiem">
+            <input type="text" placeholder="Tìm mẫu gạch, thiết bị...">
+            <button type="submit">Tìm kiếm</button>
+
         </div>
         <div class="menu-link">
         <a href="#"> Trang chủ</a>
