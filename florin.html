@@ -114,12 +114,15 @@
     .show-ct1 {
         display: flex;
         margin-top: 60px;
-        padding: 0 280px;
+        padding: 0 max(20px, (100% - 1360px) / 2);
         gap: 130px;
+        flex-wrap: wrap-reverse;
     }
 
     .van-ban-chuan {
         margin-top: 200px;
+        flex: 1;
+        min-width: 300px;
     }
 
     .tieu-de-lon {
@@ -148,16 +151,20 @@
 
     .show-ct1 img {
         border-radius: 15px;
-        width: 50%;
+        flex: 0 1 500px;
         aspect-ratio: 1/1;
         object-fit: cover;
+        width: 100%;
+        max-width: 500px;
+
     }
 
     .show-ct2 {
         display: flex;
         margin-top: 100px;
-        padding: 0 280px;
+        padding: 0 max(20px, (100% - 1360px) / 2);
         gap: 130px;
+        flex-wrap: wrap;
     }
 
     .show-ct2 img {
@@ -345,17 +352,100 @@
         margin-bottom: 20px;
         font-size: 13px;
     }
+
     .duong-ke {
         border: 0;
-        border-top: 1px solid rgba(254,254,254,0.3);
+        border-top: 1px solid rgba(254, 254, 254, 0.3);
         width: 100%;
         margin-top: 40px;
     }
+
     .van-ban-ps {
         color: white;
         width: 50%;
         font-size: 12px;
         margin: 10px;
+    }
+
+    @media (max-width: 768px) {
+
+        /* 1. Căn giữa toàn bộ khối cha */
+        html,
+        body {
+            overflow-x: hidden;
+            /* Ngăn chặn việc bị lệch sang ngang */
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .show-ct1 {
+            padding: 0 20px !important;
+            /* Đây là khoảng cách 2 bên viền */
+            flex-wrap: wrap-reverse !important;
+            justify-content: center !important;
+            /* Căn giữa ảnh */
+            gap: 20px !important;
+        }
+
+        .show-ct2 {
+            padding: 0 20px !important;
+            /* Đây là khoảng cách 2 bên viền */
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+            /* Căn giữa ảnh */
+            gap: 20px !important;
+        }
+
+        /* 2. Căn giữa văn bản và các thành phần bên trong */
+        .van-ban-chuan {
+            margin-top: 20px !important;
+            margin-left: 0 !important;
+            /* THÊM DÒNG NÀY: Xóa lề trái bị lệch */
+            width: 100% !important;
+            /* THÊM DÒNG NÀY: Ép cụm chữ rộng hết màn hình để căn giữa mới chuẩn */
+            flex: 1 1 100% !important;
+            text-align: center !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+
+        .van-ban-chuan h1,
+        .van-ban-chuan p {
+            width: 100% !important;
+            text-align: center !important;
+            margin-left: 0 !important;
+        }
+
+        /* 3. Đảm bảo ảnh co giãn và giữ tỉ lệ */
+        .show-ct1 img,
+        .show-ct2 img {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 1/1 !important;
+            flex: none !important;
+        }
+
+        .thanh-menu {
+            padding: 0 20px !important;
+            /* Căn đều 2 bên lề 20px */
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            /* Height giữ nguyên theo code cũ của anh */
+        }
+
+        .menu-link {
+            display: none !important;
+            /* Ẩn các đề mục: Sản phẩm, Dự án... */
+        }
+
+        .search-box {
+            display: block !important;
+            /* Giữ lại kính lúp */
+        }
     }
 </style>
 
