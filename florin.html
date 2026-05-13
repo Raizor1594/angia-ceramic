@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        height: 100%;
+    }
+
+    .banner {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('phoi-canh.jpg');
+        height: 100vh;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+        top: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .thanh-menu {
+        position: fixed;
+        top: 15px;
+        left: 50%;
+        transform: translate(-50%);
+        width: 90%;
+        max-width: 1300px;
+        background-color: white;
+        border-radius: 10px;
+        height: 65px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+        z-index: 10000;
+    }
+
+    .menu-link {
+        display: flex;
+        gap: 60px;
+    }
+
+    .menu-link a {
+        text-decoration: none;
+        color: #333;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .material-symbols-outlined {
+        font-weight: 300;
+        font-size: 30px;
+        color: #333;
+        transition: 0.3s;
+    }
+
+    .Banner-noi-dung {
+        position: absolute;
+        top: 680px;
+        left: 50%;
+        transform: translate(-50%);
+        width: 90%;
+        max-width: 1300px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        color: white;
+    }
+
+    .Banner-noi-dung p {
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    .Banner-noi-dung h1 {
+        font-size: 500%;
+        font-weight: 500;
+        margin-top: -10px;
+        letter-spacing: -1px;
+    }
+
+    .Banner-noi-dung a {
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        letter-spacing: 3px;
+        margin-top: 20px;
+        border: 1px solid white;
+        padding: 12px 10px;
+        border-radius: 30px;
+    }
+
+    .show-ct1 {
+        display: flex;
+        margin-top: 60px;
+        padding: 0 280px;
+        gap: 130px;
+    }
+
+    .van-ban-chuan {
+        margin-top: 200px;
+    }
+
+    .tieu-de-lon {
+        font-weight: 400;
+    }
+
+    .van-ban-chuan h1 .tieu-de-lon {
+        font-weight: 450;
+        color: #333;
+        letter-spacing: -1px;
+    }
+
+    .van-ban-chuan a {
+        display: inline-block;
+        padding: 12px 10px;
+        text-decoration: none;
+        color: #333;
+        border-radius: 30px;
+        border: 1px solid #333;
+        margin-top: 20px;
+    }
+
+    .mui-ten {
+        color: #333;
+    }
+
+    .show-ct1 img {
+        border-radius: 15px;
+        width: 50%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+    }
+
+    .show-ct2 {
+        display: flex;
+        margin-top: 100px;
+        padding: 0 280px;
+        gap: 130px;
+    }
+
+    .show-ct2 img {
+        border-radius: 15px;
+        width: 50%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+    }
+
+    .van-ban-chuan .tieu-de-lon p {
+        font-weight: 400;
+        color: #333;
+    }
+
+    .thanh-san-pham {
+        background-color: #F5F5F5;
+        width: 100%;
+        height: 800px;
+        padding: 1px 280px;
+        margin-top: 60px;
+    }
+
+    .thanh-san-pham__header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        gap: 200px;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+    .list-san-pham {
+        display: flex;
+        gap: 30px 25px;
+    }
+
+    .menu-sanpham {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+        background-color: white;
+        border-radius: 40px;
+    }
+
+    .menu-sanpham a {
+        display: inline-block;
+        text-decoration: none;
+        color: #333;
+        padding: 15px 20px;
+
+    }
+
+    .thanh-san-pham .van-ban-chuan {
+        margin-top: 0;
+        max-width: 600px;
+    }
+
+    .san-pham img {
+        border-radius: 20px;
+    }
+
+    .san-pham h2 {
+        font-weight: 500;
+        color: #333;
+        letter-spacing: -1px;
+        margin-top: 20px;
+    }
+
+    .highlight {
+        background-color: white;
+        width: 100%;
+        padding-bottom: 50px;
+    }
+
+    .highlight .van-ban-chuan {
+        margin-top: 20px;
+    }
+
+    .highlight__ong .van-ban-chuan .tieu-de-lon {
+        margin-bottom: 40px;
+    }
+
+    .tieu-de-nho {
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    .highlight__ong {
+        padding: 50px 280px;
+        align-items: center;
+        width: 100%;
+    }
+
+    .highlight__body_bo {
+        display: flex;
+        gap: 150px;
+    }
+
+    .cum-van-ban {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .footer {
+        background-color: #1F2529;
+        height: 500px;
+    }
+
+    .highlight__body_con img {
+        border-radius: 20px;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+    }
+
+    .nut-chuyen-tiep {
+        border: 1px solid #333;
+        padding: 12px 10px;
+        border-radius: 20px;
+    }
+
+    .nut-chuyen-tiep a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .cum-dieu-huong {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 35px;
+    }
+
+    .nut-tron {
+        border-radius: 50%;
+        border: 1px solid #333;
+        height: 45px;
+        width: 45px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        background: transparent;
+    }
+
+    .nut-tron .material-symbols-outlined {
+        font-size: 24px;
+        font-variation-settings: 'wght' 200;
+    }
+
+    .highlight .cum-dieu-huong .nut-tron {
+        margin-top: -30px;
+    }
+
+    .footer {
+        padding: 50px 280px;
+    }
+
+    .footer_ong {
+        display: flex;
+        gap: 100px;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .footer-cha_all_head {
+        display: flex;
+        gap: 50px;
+        margin-left: -450px;
+    }
+
+    .footer_ong .logo {
+        color: white;
+        font-size: 20px;
+        line-height: 1;
+        margin-top: 0;
+        font-weight: 800;
+    }
+
+    .link-footer a {
+        text-decoration: none;
+        color: white;
+        display: block;
+        margin-bottom: 20px;
+        font-size: 13px;
+    }
+    .duong-ke {
+        border: 0;
+        border-top: 1px solid rgba(254,254,254,0.3);
+        width: 100%;
+        margin-top: 40px;
+    }
+    .van-ban-ps {
+        color: white;
+        width: 50%;
+        font-size: 12px;
+        margin: 10px;
+    }
+</style>
+
+<body>
+    <nav class="thanh-menu">
+        <div class="logo">
+            AN GIA
+        </div>
+        <div class="menu-link">
+            <a href="#">Sản Phẩm</a>
+            <a href="#">Dự Án</a>
+            <a href="#">Chuyên Gia</a>
+            <a href="#">Công Ty</a>
+            <a href="#">Catalog</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="search-box">
+            <span class="material-symbols-outlined">search</span>
+        </div>
+    </nav>
+    <div class="banner">
+        <div class="Banner-noi-dung">
+            <p>Nâng tầm không gian sống của bạn</p>
+            <h1>An Gia</h1>
+            <a href="#" class="nut-collection">
+                Khám phá bộ sưu tập
+                <span class="mui-ten">&rarr;</span>
+            </a>
+        </div>
+    </div>
+    <div class="show-ct1">
+        <div class="van-ban-chuan">
+            <h1 class="tieu-de-lon">
+                Bằng khát vọng vươn tầm và sự tận tâm, chúng tôi tuyển chọn những mẫu gạch tinh tế nhất để nâng tầm
+                ngôi
+                nhà Việt.
+            </h1>
+            <a href="#" class="nut-collection">
+                Khám phá cùng tôi
+                <span class="mui-ten">&rarr;</span>
+            </a>
+        </div>
+        <img src="show-ct1.jpg" alt="">
+
+    </div>
+    <div class="show-ct2">
+        <img src="show-ct2.jpg" alt="">
+        <div class="van-ban-chuan">
+            <h1 class="tieu-de-lon">
+                Khám phá những bộ sưu tập mới nhất
+            </h1>
+            <p class="mo-ta">Hãy để những bộ sưu tập mới tại An Gia khơi nguồn cảm hứng cho bạn. Các sản phẩm được tuyển
+                chọn để định
+                hình phong cách sống đương đại và đáp ứng hoàn hảo mọi yêu cầu khắt khe của các dự án thiết kế.</p>
+            <a href="#" class="nut-collection">
+                Xem thêm
+                <span class="mui-ten">&rarr;</span>
+            </a>
+        </div>
+    </div>
+    <div class="thanh-san-pham">
+        <div class="thanh-san-pham__header">
+            <div class="van-ban-chuan">
+                <h1 class="tieu-de-lon">
+                    Sản phẩm của chúng tôi
+                </h1>
+                <p class="mo-ta">Tìm kiếm cái đẹp là bản năng nguyên bản của con người. Tại An Gia, bản năng sáng tạo ấy
+                    được hòa
+                    quyện cùng tâm huyết và công nghệ sản xuất hiện đại để tạo nên những không gian sống đẳng cấp.
+                </p>
+            </div>
+            <div class="menu-sanpham">
+                <a href="#">Vân đá</a>
+                <a href="#">Không gian</a>
+                <a href="#">Thực tế</a>
+                <a href="#">Xuất xứ</a>
+            </div>
+        </div>
+        <div class="list-san-pham">
+            <div class="san-pham">
+                <img src="stone 1.jpg" alt="Stone">
+                <h2>Stone</h2>
+            </div>
+            <div class="san-pham">
+                <img src="mable.jpg" alt="Mable">
+                <h2>Mable</h2>
+            </div>
+            <div class="san-pham">
+                <img src="wood.jpg" alt="wood">
+                <h2>Wood</h2>
+            </div>
+            <div class="san-pham">
+                <img src="concrete.jpg" alt="Concrete">
+                <h2>Concrete</h2>
+            </div>
+            <div class="san-pham">
+                <img src="metal.jpg" alt="metal">
+                <h2>Metal</h2>
+            </div>
+        </div>
+        <div class="cum-dieu-huong">
+            <button class="nut-tron nut-dieu-huong-trai">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <button class="nut-tron nut-dieu-huong-phai">
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+    <div class="highlight">
+        <div class="highlight__ong">
+            <div class="van-ban-chuan">
+                <h1 class="tieu-de-lon">Highlight</h1>
+            </div>
+            <div class="highlight__body_bo">
+                <div class="highlight__body_con">
+                    <img src="highlight1.jpg" alt="">
+                    <div class="cum-van-ban">
+                        <div class="van-ban-chuan">
+                            <h2 class="tieu-de-nho">Elitique</h2>
+                            <p>The luxury bathroom destination: an outstanding collaboration between An Gia and Florim
+                            </p>
+                        </div>
+                        <div class="nut-chuyen-tiep">
+                            <a href="#" class="nut-collection">
+                                Discover more
+                                <span class="mui-ten">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="highlight__body_con">
+                    <img src="highlight2.jpg" alt="">
+                    <div class="van-ban-chuan">
+                        <h2 class="tieu-de-nho">CarbonZero</h2>
+                        <p>TAn Gia Carbon Neutral surfaces that offset all CO2 emitted during the surfaces life cycle.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cum-dieu-huong">
+            <button class="nut-tron nut-dieu-huong-trai">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <button class="nut-tron nut-dieu-huong-phai">
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer_ong">
+            <div class="logo">AN GIA</div>
+            <div class="footer-cha_all_head">
+                <div class="footer_cha_1">
+                    <div class="link-footer">
+                        <a href="#">Về chúng tôi</a>
+                        <a href="#">Hệ thống Showroom</a>
+                        <a href="#">Dự án tiêu biểu</a>
+                        <a href="#">Tuyển dụng</a>
+                    </div>
+                </div>
+                <div class="footer_cha_2">
+                    <div class="link-footer">
+                        <a href="#">Hướng dẫn thi công</a>
+                        <a href="#">Chính sách bảo hành</a>
+                        <a href="#">Tư vấn kỹ thuật</a>
+                        <a href="#">Catalog sản phẩm</a>
+                    </div>
+                </div>
+                <div class="footer_cha_3">
+                    <div class="link-footer">
+                        <a href="#">Địa chỉ Showroom</a>
+                        <a href="#">Hotline hỗ trợ</a>
+                        <a href="#">Email báo giá</a>
+                        <a href="#">Giờ làm việc</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-cha_right"></div>
+        </div>
+        <hr class="duong-ke">
+        <div class="footer_ong_down">
+            <div class="footer-cha_all_down">
+                <div class="cum-van-ban">
+                    <div class="van-ban-ps">
+                        <p>Registered office: Via Canaletto 24, 41042 Fiorano Modenese. — Companies Register of
+                            Modena No. 01265320364. — Share Capital fully paid-up Euro 50,000,000 VAT No./Tax Code
+                            01265320364 — Copyright © 2025 Florim Ceramiche S.p.A. SB sole shareholder company.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
