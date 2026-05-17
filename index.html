@@ -1,558 +1,1800 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 01. CẤU HÌNH CHUNG */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* 02. MOBILE FIRST */
+        /* header */
+        #header {
+            background-color: #8B0000;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px grba(0, 0, 0, 0.1);
+        }
+
+        .header_head .link_menu {
+            display: none;
+        }
+
+
+        /* logo vs icon */
+        .header_menu-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            margin-bottom: 10px;
+        }
+
+        .menu-bar_de_muc {
+            display: none;
+        }
+
+        .logo {
+            flex: 1;
+            text-align: center;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+            display: inline-block;
+            aspect-ratio: 1/1;
+        }
+
+        /* thanh tìm kiếm */
+        .search-container {
+            background-color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+            width: auto;
+            margin: 5px 15px 10px;
+            flex: 1;
+        }
+
+        .header_icon-logo {
+            display: flex;
+            padding: 10px 20px;
+
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        .search-icon {
+            color: #8B0000;
+            font-size: 16px;
+        }
+
+        .mobile-icon-left,
+        .mobile-icon-right,
+        .mobile-icon-left a,
+        .mobile-icon-right a {
+            color: rgba(255, 255, 255, 0.438);
+            font-size: 40px;
+        }
+
+        /*hero slide*/
+        #hero-slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-container img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+        }
+
+        .button-dieu-huong {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .button-dieu-huong button {
+            pointer-events: auto;
+            background-color: rgba(255, 255, 255, 0.4);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-dot {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        .dot.active {
+            background-color: white;
+            width: 15px;
+            height: 15px;
+        }
+
+        /* best seller */
+        #best-seller {
+            background-color: white;
+            padding: 20px 10px;
+            position: relative;
+        }
+
+        .best-seller_header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .best-seller_container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .best-seller_container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .best-seller_container_item {
+            flex: 0 0 calc(50% - 5px);
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            background-color: white;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        .best-seller_container_item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+            border-radius: 4px;
+            display: block;
+        }
+
+        h3 {
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        .item_price {
+            font-weight: 700;
+        }
+
+        /* ==================== CSS CHO DANH MỤC SẢN PHẨM CHUYÊN NGHIỆP ==================== */
+        #product-categories {
+            background-color: #ffffff;
+            padding: 30px 10px;
+            /* Tạo khoảng trống đệm trên dưới rộng rãi, lề 2 bên 10px */
+            width: 100%;
+        }
+
+        /* 1. XỬ LÝ TIÊU ĐỀ CÓ HAI ĐƯỜNG KẺ HAI BÊN */
+        .product-categories_header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            /* Khoảng cách giữa chữ và đường kẻ */
+            margin-bottom: 25px;
+            /* Khoảng cách từ tiêu đề xuống khung lưới */
+        }
+
+        .categories-title {
+            color: #8B0000;
+            /* Màu đỏ đô (Dark Red) chuẩn thương hiệu theo ý sếp */
+            font-size: 18px;
+            font-weight: 700;
+            /* Nét chữ đậm */
+            white-space: nowrap;
+            /* Cấm chữ tiêu đề bị xuống dòng */
+            text-transform: uppercase;
+            /* Đảm bảo chữ luôn in hoa quyền lực */
+        }
+
+        .divider-line {
+            flex: 1;
+            /* Để đường kẻ tự động kéo dài đối xứng ra hai bên */
+            height: 1px;
+            /* Độ mảnh của đường kẻ */
+            background-color: #cccccc;
+            /* Màu xám mảnh trang trí */
+            max-width: 80px;
+            /* Giới hạn độ dài đường kẻ trên Mobile cho cân đối */
+        }
+
+        /* 2. KHUNG LƯỚI GRID LAYOUT 2X2 */
+        .product-categories_container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* Chia đều thành đúng 2 cột */
+            gap: 12px;
+            /* Khoảng cách đều giữa các ô danh mục tạo độ thoáng đãng */
+            width: 100%;
+        }
+
+        /* 3. CHI TIẾT THIẾT KẾ TỪNG Ô DANH MỤC (HÌNH ẢNH ĐÈ CHỮ) */
+        .product-categories_container_item {
+            position: relative;
+            /* Làm gốc tọa độ để cố định lớp phủ và chữ đè lên ảnh */
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            /* ÉP TỈ LỆ: Khóa chặt khung ảnh theo tỉ lệ chữ nhật ngang 4:3 */
+            border-radius: 8px;
+            /* Bo góc 8px hiện đại cho các góc gạch/phối cảnh */
+            overflow: hidden;
+            /* Cắt gọn phần ảnh thừa, giữ bo góc sạch sẽ */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            /* Tạo bóng đổ nhẹ cho sang trọng */
+        }
+
+        /* Định dạng ảnh nền danh mục */
+        .categories_img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Giúp bức ảnh phối cảnh của sếp luôn đầy đặn, không bị co méo */
+            display: block;
+        }
+
+        /* LỚP PHỦ MÀN TỐI MỜ (DARK OVERLAY TINT) */
+        .dark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Màu đen phủ mờ 40% giúp làm nổi bật chữ trắng */
+            z-index: 1;
+            /* Nằm trên ảnh */
+        }
+
+        /* KHỐI CHỨA CHỮ CĂN GIỮA TUYỆT ĐỐI */
+        .categories_text_content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            /* Căn giữa theo chiều dọc */
+            justify-content: center;
+            /* Căn giữa theo chiều ngang */
+            z-index: 2;
+            /* Nằm trên cùng, đè lên lớp màn tối */
+            padding: 10px;
+        }
+
+        /* Định dạng font chữ in hoa bản to */
+        .item_tieu-de {
+            color: #ffffff;
+            /* Màu chữ trắng tinh khôi nổi bật */
+            font-size: 14px;
+            /* Kích thước chữ vừa vặn, hiển thị rõ trên thiết bị di động */
+            font-weight: 700;
+            /* Nét chữ đậm bản to (Bold Sans-serif) */
+            text-align: center;
+            text-transform: uppercase;
+            /* Ép buộc viết hoa toàn bộ */
+            letter-spacing: 0.5px;
+            /* Giãn dòng chữ nhẹ nhìn cho sang trọng */
+            line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            /* Tạo bóng chữ nhẹ giúp tăng độ đọc rõ */
+        }
+
+        /* ==================== CSS CHO PHẦN SẢN PHẨM MỚI (MOBILE FIRST) ==================== */
+        #new-item {
+            background-color: #ffffff;
+            /* Đặt nền trắng sạch sẽ cho mục sản phẩm mới */
+            padding: 30px 0;
+            /* Khoảng cách đệm trên dưới là 30px, hai bên lề là 0 */
+            position: relative;
+            /* Làm gốc tọa độ để căn chỉnh các phần tử con */
+        }
+
+        /* 1. ĐỒNG BỘ STYLE TIÊU ĐỀ CÓ ĐƯỜNG KẺ HAI BÊN */
+        .new-item_header {
+            display: flex;
+            /* Kích hoạt Flexbox layout để xếp chữ và đường kẻ nằm ngang */
+            align-items: center;
+            /* Căn tiêu đề và đường kẻ thẳng hàng chính giữa theo chiều dọc */
+            justify-content: center;
+            /* Căn toàn bộ cụm tiêu đề ra chính giữa trang */
+            gap: 15px;
+            /* Tạo khoảng trống 15px giữa chữ tiêu đề và đường kẻ mảnh */
+            margin-bottom: 25px;
+            /* Khoảng cách trống 25px từ tiêu đề xuống danh sách sản phẩm */
+        }
+
+        .new-item-title {
+            color: #8B0000;
+            /* Đặt màu chữ đỏ đô (Dark Red) đồng bộ với danh mục sản phẩm */
+            font-size: 18px;
+            /* Kích thước chữ trên Mobile là 18px */
+            font-weight: 700;
+            /* Nét chữ đậm bản to siêu nổi bật */
+            white-space: nowrap;
+            /* Cấm chữ tiêu đề không được phép tự ý xuống dòng */
+            text-transform: uppercase;
+            /* Đảm bảo toàn bộ chữ luôn luôn in hoa quyền lực */
+        }
+
+        #new-item .divider-line {
+            flex: 1;
+            /* Để đường kẻ tự động co giãn kéo dài đối xứng ra hai bên hông */
+            height: 1px;
+            /* Độ mảnh của đường kẻ trang trí là 1px */
+            background-color: #cccccc;
+            /* Màu xám mảnh tinh tế */
+            max-width: 80px;
+            /* Giới hạn độ dài đường kẻ trên Mobile tối đa là 80px để cân đối */
+        }
+
+        /* 2. KHUNG HIỂN THỊ VÀ NÚT ĐIỀU HƯỚNG CAROUSEL WRAPPER */
+        .new-item_wrapper {
+            position: relative;
+            /* Làm gốc tọa độ cố định cho 2 nút mũi tên điều hướng trái phải */
+            display: flex;
+            /* Bật Flexbox để quản lý danh sách sản phẩm bên trong */
+            align-items: center;
+            /* Căn giữa các phần tử theo trục dọc */
+            padding: 0 15px;
+            /* Khoảng đệm an toàn lề trái lề phải là 15px cho ảnh phóng to sát viền */
+        }
+
+        /* KHỐI CONTAINER BẬT TÍNH NĂNG VUỐT TRƯỢT NGANG */
+        .new-item_container {
+            display: flex;
+            /* Xếp các thẻ sản phẩm nằm dàn ngang thành một chuỗi dài */
+            overflow-x: auto;
+            /* Kích hoạt tính năng vuốt trượt ngang trơn tru bằng tay trên điện thoại */
+            scroll-snap-type: x mandatory;
+            /* Vuốt thả tay ra là tự động găm khít thẻ sản phẩm vào lề màn hình */
+            scroll-behavior: smooth;
+            /* Hiệu ứng cuộn trượt chuyển động mượt mà, êm ái */
+            gap: 12px;
+            /* Khoảng cách trống cố định giữa các thẻ sản phẩm là 12px */
+            width: 100%;
+            /* Chiều rộng bao phủ trọn vẹn 100% không gian cho phép */
+        }
+
+        /* Ẩn thanh cuộn mặc định của hệ thống để giao diện sạch đẹp chuyên nghiệp */
+        .new-item_container::-webkit-scrollbar {
+            display: none;
+            /* Ẩn hoàn toàn thanh cuộn trên Chrome, Safari, Cốc Cốc, Mobile */
+        }
+
+        /* 3. CHI TIẾT THIẾT KẾ TỪNG THẺ SẢN PHẨM BLOCK ĐỨNG ĐỘC LẬP */
+        .new-item_container_item {
+            flex: 0 0 calc(50% - 6px);
+            /* Ép cố định hiện ĐÚNG 2 SẢN PHẨM TO ĐÙNG trên 1 màn hình (50% trừ nửa gap) */
+            flex-shrink: 0;
+            /* Khóa cứng kích thước, cấm trình duyệt tự ý bóp nhỏ thẻ khi tràn hàng ngang */
+            scroll-snap-align: start;
+            /* Điểm găm khi vuốt chạm tính từ mép bắt đầu của thẻ */
+            display: flex;
+            /* Bật flexbox nội bộ cho thẻ sản phẩm */
+            flex-direction: column;
+            /* Xếp các thành phần ảnh, chữ, giá theo chiều dọc từ trên xuống */
+            align-items: center;
+            /* Căn giữa toàn bộ nội dung chữ và giá ra chính giữa thẻ sản phẩm */
+            background-color: #ffffff;
+            /* Nền trắng sạch sẽ cho từng block sản phẩm */
+            box-sizing: border-box;
+            /* Đảm bảo tính toán kích thước bao gồm cả đệm và viền chuẩn xác */
+        }
+
+        /* Khung bao bọc ảnh sản phẩm để khóa hình vuông */
+        .new-item_wrapper .img-box {
+            position: relative;
+            /* Làm gốc tọa độ tuyệt đối cho nhãn sale và brand logo đè lên ảnh */
+            width: 100%;
+            /* Chiều rộng khung ảnh chiếm trọn 100% độ rộng thẻ */
+            aspect-ratio: 1 / 1;
+            /* ÉP BUỘC TỶ LỆ: Khóa bức ảnh luôn là hình vuông hoàn hảo tuyệt đối */
+            overflow: hidden;
+            /* Cắt gọn mọi phần ảnh thừa nếu ảnh gốc của sếp là hình chữ nhật */
+            margin-bottom: 12px;
+            /* Tạo khoảng trống 12px dưới ảnh trước khi đến tên sản phẩm */
+        }
+
+        .new_item_img {
+            width: 100%;
+            /* Chiều rộng ảnh chiếm trọn 100% khung chứa */
+            height: 100%;
+            /* Chiều cao ảnh chiếm trọn 100% khung chứa */
+            object-fit: cover;
+            /* Cắt cúp ảnh thông minh từ tâm, gạch men vuông vức không lo bị co méo hình */
+            display: block;
+            /* Chuyển sang dạng khối để triệt tiêu các khoảng trống thừa dưới đáy */
+        }
+
+        /* LOGO THƯƠNG HIỆU NHỎ MÀU ĐỎ GÓC TRÊN BÊN TRÁI ẢNH */
+        .brand-logo-small {
+            position: absolute;
+            /* Đặt vị trí tuyệt đối ghim chặt lên góc ảnh */
+            top: 6px;
+            /* Cách mép trên cùng của bức ảnh là 6px */
+            left: 6px;
+            /* Cách mép lề trái của bức ảnh là 6px */
+            color: #8B0000;
+            /* Màu đỏ đô cho logo nhỏ xinh theo ý sếp */
+            font-size: 14px;
+            /* Kích thước biểu tượng logo vừa vặn dễ nhìn */
+            z-index: 3;
+            /* Nằm trên cùng, đè lên trên cả nhãn sale */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Nền trắng mờ nhẹ phía sau giúp logo đỏ nổi bần bật */
+            width: 20px;
+            /* Chiều rộng khối chứa logo */
+            height: 20px;
+            /* Chiều cao khối chứa logo */
+            border-radius: 3px;
+            /* Bo góc nhẹ 3px cho khối logo thêm tinh tế */
+            display: flex;
+            /* Bật flexbox để căn giữa logo */
+            align-items: center;
+            /* Căn giữa logo theo chiều dọc */
+            justify-content: center;
+            /* Căn giữa logo theo chiều ngang */
+            font-weight: 600;
+        }
+
+        /* NHÃN TRÒN GIẢM GIÁ -20% ĐÈ LÊN MÉP ẢNH BÊN TRÁI */
+        .new-item_wrapper .discount-badge {
+            position: absolute;
+            /* Đặt vị trí tuyệt đối ghim lên cạnh trái ảnh */
+            top: 32px;
+            /* Đẩy xuống dưới logo một khoảng để cách mép trên 32px không bị chồng lên nhau */
+            left: 6px;
+            /* Bám sát lề trái ảnh 6px đồng bộ */
+            background-color: #8B0000;
+            /* Nền nhãn màu đỏ đô (Dark Red) in đậm theo đúng mô tả của sếp */
+            color: #ffffff;
+            /* Màu chữ số phần trăm giảm giá trắng tinh khôi */
+            font-size: 11px;
+            /* Cỡ chữ 11px nhỏ gọn hiển thị rõ trên điện thoại */
+            font-weight: 700;
+            /* Nét chữ in đậm siêu nổi bật kích thích thị giác */
+            width: 36px;
+            /* Chiều rộng nhãn sale là 36px */
+            height: 36px;
+            /* Chiều cao nhãn sale là 36px */
+            border-radius: 50%;
+            /* Bo góc 50% biến khung thành hình tròn xoe hoàn hảo */
+            display: flex;
+            /* Dùng Flexbox để điều phối chữ bên trong */
+            align-items: center;
+            /* Căn chữ ra chính giữa nhãn theo chiều dọc */
+            justify-content: center;
+            /* Căn chữ ra chính giữa nhãn theo chiều ngang */
+            z-index: 2;
+            /* Thứ tự hiển thị lớp là 2 để nổi bật trên bề mặt tấm ảnh sản phẩm */
+        }
+
+        /* TÊN SẢN PHẨM (PRODUCT TITLE) CĂN GIỮA DƯỚI ẢNH */
+        .new-item_wrapper .item_name {
+            font-size: 12px;
+            /* Cỡ chữ vừa phải 12px chuẩn thiết kế giao diện di động */
+            text-transform: uppercase;
+            /* Tự động viết hoa toàn bộ chữ tên sản phẩm theo lệnh của sếp */
+            color: #000000;
+            /* Màu chữ đen tuyền rõ nét */
+            text-align: center;
+            /* Căn giữa toàn bộ tên loại gạch và mã số ra chính giữa thẻ */
+            font-weight: 600;
+            /* Nét chữ đậm bản to săn chắc quý phái */
+            line-height: 1.4;
+            /* Khoảng cách dòng thoáng đãng giúp khi xuống dòng không bị dính chữ */
+            padding: 0 5px;
+            /* Khoảng đệm an toàn lề trái phải 5px để chữ không chạm vách ô */
+            margin-bottom: 2px;
+            /* Khoảng trống 2px trước khi đến phần dòng kích thước */
+        }
+
+        /* DÒNG HIỂN THỊ KÍCH THƯỚC ĐÓNG NGOẶC ĐƠN Ở DƯỚI */
+        .new-item_wrapper .item_size {
+            font-size: 11px;
+            /* Cỡ chữ kích thước nhỏ hơn một tông ở mức 11px */
+            color: #555555;
+            /* Màu xám đậm lịch lãm tạo chiều sâu cho layout */
+            text-align: center;
+            /* Căn dòng kích thước ra chính giữa thẻ sản phẩm */
+            margin-bottom: 6px;
+            /* Khoảng trống 6px dưới kích thước trước khi đến khối hiển thị giá */
+        }
+
+        /* KHỐI HIỂN THỊ GIÁ XẾP TRÊN CÙNG MỘT HÀNG NGANG */
+        .new-item_wrapper .item_price-box {
+            display: flex;
+            /* Kích hoạt Flexbox layout để giá cũ và giá mới xếp nằm ngang cạnh nhau */
+            justify-content: center;
+            /* Căn chỉnh cả cụm giá ra chính giữa hàng */
+            align-items: center;
+            /* Căn hai mức giá thẳng hàng tăm tắp với nhau theo trục dọc */
+            gap: 8px;
+            /* Khoảng cách trống giữa giá cũ và giá mới là 8px thoáng đãng */
+            width: 100%;
+            /* Chiều rộng khối bao phủ trọn vẹn hàng ngang */
+        }
+
+        /* GIÁ CŨ CHỮ MÀU XÁM NHẠT CÓ ĐƯỜNG GẠCH NGANG */
+        .new-item_wrapper .price-old {
+            color: #999999;
+            /* Chữ màu xám nhạt tinh tế đúng theo mô tả chi tiết của sếp */
+            font-size: 11px;
+            /* Cỡ chữ nhỏ hơn giá mới một tông (11px) để phân cấp thị giác */
+            text-decoration: line-through;
+            /* Thêm đường kẻ gạch ngang xuyên qua giữa chữ số giá cũ */
+        }
+
+        /* GIÁ MỚI CHỮ MÀU ĐEN IN ĐẬM CỠ LỚN HƠN */
+        .new-item_wrapper .price-new {
+            color: #000000;
+            /* Chữ màu đen tuyền mạnh mẽ nổi bật */
+            font-size: 13px;
+            /* Cỡ chữ lớn hơn giá cũ (13px) để gây sự chú ý với khách mua hàng */
+            font-weight: 700;
+            /* Định dạng in đậm hoàn toàn để tăng tính chốt đơn */
+        }
+
+        /* KÝ HIỆU ĐƠN VỊ TIỀN TỆ GẠCH CHÂN Ở ĐUÔI (đ) */
+        .currency-symbol {
+            text-decoration: underline;
+            /* Thêm đường gạch chân ở dưới đuôi chữ đ theo yêu cầu của sếp */
+            font-size: 12px;
+            /* Kích thước chữ đ nhỏ hơn số một xíu nhìn cực kỳ chuyên nghiệp */
+            display: inline-block;
+            /* Cho phép hiển thị dạng khối nội dòng để nhận thuộc tính gạch chân đẹp mắt */
+            margin-left: 1px;
+            /* Khoảng cách trống nhẹ 1px với số tiền phía trước */
+        }
+
+        /* NÚT MŨI TÊN ĐIỀU HƯỚNG DẠNG MẢNH ĐẶT CHÍNH GIỮA CHIỀU CAO ẢNH */
+        .new-item_wrapper .nav-arrow {
+            position: absolute;
+            /* Đặt vị trí tuyệt đối ghim nút cố định lên hai mép trái phải của wrapper */
+            top: 25%;
+            /* Căn chỉnh tọa độ chiều dọc đặt ở mức 25% (đúng vị trí chính giữa chiều cao của khối ảnh sản phẩm) */
+            background: none;
+            /* Xóa bỏ hoàn toàn màu nền mặc định của thẻ nút bấm HTML */
+            border: none;
+            /* Xóa bỏ hoàn toàn đường viền mặc định của nút bấm */
+            font-size: 16px;
+            /* Kích thước biểu tượng mũi tên mảnh vừa vặn là 16px */
+            color: #000000;
+            /* Màu sắc mũi tên màu đen mảnh đúng theo mô tả của sếp */
+            cursor: pointer;
+            /* Biến con trỏ chuột thành hình bàn tay khi sếp rê chuột vào nút bấm */
+            z-index: 5;
+            /* Đặt thứ tự lớp hiển thị là 5 để đảm bảo nút luôn nổi lên trên, dễ dàng click */
+        }
+
+        .new-item_wrapper .prev-arrow {
+            left: 0px;
+        }
+
+        /* Ghim nút mũi tên Trái bám sát mép trái wrapper 0px */
+        .new-item_wrapper .next-arrow {
+            right: 0px;
+        }
+
+        /* Ghim nút mũi tên Phải bám sát mép phải wrapper 0px */
+
+        /* THANH PHÂN TRANG DẠNG CHẤM TRÒN DƯỚI CÙNG */
+        .new-item_pagination {
+            display: flex;
+            /* Kích hoạt Flexbox layout cho khối phân trang */
+            justify-content: center;
+            /* Căn chỉnh toàn bộ khối chấm tròn nằm ra chính giữa trang */
+            margin-top: 15px;
+            /* Tạo khoảng cách trống 15px phía trên khối chấm so với thẻ sản phẩm */
+        }
+
+        .new-item_pagination .pagination-dots {
+            display: flex;
+            /* Xếp các chấm tròn nằm ngang hàng đều đặn cạnh nhau */
+            gap: 6px;
+            /* Khoảng cách trống giữa các dấu chấm tròn nhỏ là 6px */
+            align-items: center;
+            /* Căn giữa các chấm tròn đồng đều theo trục dọc trung tâm */
+        }
+
+        /* Chấm tròn xám nhạt mặc định */
+        .new-item_pagination .dot-small {
+            width: 7px;
+            /* Chiều rộng chấm tròn mặc định là 7px */
+            height: 7px;
+            /* Chiều cao chấm tròn mặc định là 7px */
+            background-color: #dddddd;
+            /* Đặt màu của chấm mặc định là màu xám nhạt dịu mắt */
+            border-radius: 50%;
+            /* Bo góc 50% tạo thành hình tròn xoe nhỏ nhắn */
+        }
+
+        /* CHẤM THỨ 3 BIẾN THÀNH MÀU ĐEN ACTIVE THEO Ý SẾP */
+        .new-item_pagination .dot-small.active {
+            background-color: #000000;
+            /* SỬA TẠI ĐÂY: Biến chấm active thành màu đen tuyền biểu thị trang được chọn */
+            width: 8px;
+            /* Tăng nhẹ chiều rộng lên 8px tạo hiệu ứng nhấn mạnh */
+            height: 8px;
+            /* Tăng nhẹ chiều cao lên 8px giữ đúng tỷ lệ hình tròn */
+        }
+
+        /* ==================== CSS MỤC PHỐI CẢNH KHÔNG GIAN (MOBILE FIRST) ==================== */
+        /* Định dạng nền và khoảng cách đệm */
+        #room-gallery {
+            background-color: #ffffff;
+            padding: 30px 10px;
+            width: 100%;
+        }
+
+        /* Đồng bộ style tiêu đề chính có đường kẻ xám */
+        .room-gallery_header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .gallery-title {
+            color: #8B0000;
+            font-size: 18px;
+            font-weight: 700;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        #room-gallery .divider-line {
+            flex: 1;
+            height: 1px;
+            background-color: #cccccc;
+            max-width: 80px;
+        }
+
+        /* Khung chứa dạng một cột đứng tự động nhận diện cả 6 ảnh xếp chồng dọc */
+        .room-gallery_container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            /* Khoảng cách đều nhau giữa 6 khối ảnh phối cảnh */
+            width: 100%;
+        }
+
+        /* Thiết kế khung chứa ảnh chữ nhật ngang 16:9 sang trọng */
+        .room-gallery_item {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            /* Khóa chặt tỷ lệ hình chữ nhật ngang */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .gallery_img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Cắt ảnh phối cảnh vừa vặn không lo méo hình */
+            display: block;
+        }
+
+        /* Lớp phủ màn tối mờ 35% */
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.35);
+            z-index: 1;
+        }
+
+        /* Khối chứa chữ trắng căn giữa tuyệt đối cả dọc lẫn ngang */
+        .gallery_text_content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            padding: 10px;
+        }
+
+        .gallery_item_title {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* --- CSS CỤM NÚT GHIM CỐ ĐỊNH KHI CUỘN MAN HÌNH --- */
+        .floating-contact-widgets {
+            position: fixed;
+            /* Khóa chết vị trí cố định trên màn hình điện thoại */
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+            /* Đảm bảo nổi lên trên cả 6 bức ảnh phối cảnh */
+        }
+
+        .contact-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .zalo-btn {
+            background-color: #0068FF;
+        }
+
+        .zalo-text {
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            font-style: italic;
+            z-index: 2;
+        }
+
+        /* Vòng sóng lan tỏa mờ nhịp nhàng */
+        .ripple-wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0068FF;
+            border-radius: 50%;
+            opacity: 0.6;
+            z-index: 1;
+            animation: rippleEffect 2s infinite ease-out;
+        }
+
+        .ripple-wave:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        @keyframes rippleEffect {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .phone-btn {
+            background-color: #8B0000;
+        }
+
+        .phone-icon-rotate {
+            color: #ffffff;
+            font-size: 18px;
+            transform: rotate(15deg);
+        }
+
+        /* ==================== CSS CHO PHẦN TIN TỨC MỚI (SLIDER 5 BÀI) ==================== */
+        #latest-new {
+            background-color: #ffffff;
+            padding: 30px 0;
+            position: relative;
+            overflow: hidden;
+            /* Ngăn chặn hiện tượng tràn vỡ layout ra rìa màn hình */
+        }
+
+        /* Đồng bộ style tiêu đề chính gồm gạch mảnh */
+        .latest-new_header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .latest-new-title {
+            color: #8B0000;
+            font-size: 18px;
+            font-weight: 700;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        #latest-new .divider-line {
+            flex: 1;
+            height: 1px;
+            background-color: #cccccc;
+            max-width: 80px;
+        }
+
+        /* KHUNG WRAPPER BAO NGOÀI ĐỂ CĂN VỊ TRÍ MŨI TÊN CHÍNH XÁC */
+        .latest-new_wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 35px;
+            /* Tăng khoảng đệm 2 bên lên 35px để chừa chỗ trống cho mũi tên không đè lên ảnh */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* SỬA TẠI ĐÂY: Biến khối container thành hàng flex trượt ngang dài vô tận */
+        .latest-new_container {
+            display: flex;
+            /* Xếp toàn bộ 5 bài viết nằm dàn ngang hàng thẳng tắp */
+            overflow-x: auto;
+            /* Kích hoạt tính năng dùng ngón tay vuốt trượt ngang trên điện thoại */
+            scroll-snap-type: x mandatory;
+            /* Vuốt thả tay ra là tự găm khít khịt vào giữa màn hình */
+            scroll-behavior: smooth;
+            /* Hiệu ứng cuộn trượt chuyển động êm ái mượt mà */
+            gap: 20px;
+            /* Khoảng cách trống cố định giữa các bài viết */
+            width: 100%;
+        }
+
+        /* Ẩn thanh cuộn mặc định của hệ thống để giữ thẩm mỹ sạch đẹp */
+        .latest-new_container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* SỬA TẠI ĐÂY: Cấu hình lại thẻ bài viết chiếm trọn vẹn 100% khung nhìn */
+        .latest-new_card {
+            flex: 0 0 100%;
+            /* ÉP BUỘC: Mỗi bài viết chiếm đúng 100% không gian hiển thị để mỗi lần vuốt chỉ hiện 1 bài */
+            flex-shrink: 0;
+            /* Khóa cứng kích thước, cấm trình duyệt tự ý bóp nhỏ thẻ bài viết */
+            scroll-snap-align: center;
+            /* Điểm găm khi vuốt chạm sẽ tính chính giữa trọng tâm của thẻ bài */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Khung bao bọc ảnh thumbnail chữ nhật ngang 16:9 */
+        .news-img-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            /* Khóa chặt tỷ lệ hình chữ nhật ngang chuẩn bài viết */
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .news_img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Cắt ảnh thông minh từ tâm không lo méo phối cảnh gạch */
+            display: block;
+        }
+
+        /* Nhãn ngày tháng chữ nhật đứng màu đỏ đô bám góc trái ảnh */
+        .date-badge {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            background-color: #8B0000;
+            width: 38px;
+            padding: 6px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        .date-day {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .date-month {
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 400;
+            margin-top: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Tiêu đề bài viết màu xám đậm căn giữa */
+        .news_title {
+            color: #333333;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.5;
+            padding: 0 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Nét kẻ ngang ngắn trang trí chân bài viết */
+        .news-bottom-divider {
+            width: 40px;
+            height: 1.5px;
+            background-color: #dddddd;
+            margin: 0 auto;
+        }
+
+        /* Hai mũi tên trái phải mảnh màu đen đặt chính giữa chiều cao ảnh */
+        .latest-new_wrapper .news-arrow {
+            position: absolute;
+            top: 24%;
+            /* Đặt chính xác ở tọa độ trung tâm chiều cao của phần ảnh thumbnail */
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: #000000;
+            /* Nét màu đen dạng mảnh theo ý sếp */
+            cursor: pointer;
+            z-index: 5;
+            padding: 5px;
+        }
+
+        .latest-new_wrapper .prev-news {
+            left: 5px;
+        }
+
+        /* Đẩy nút mũi tên trái ra lề wrapper 5px */
+        .latest-new_wrapper .next-news {
+            right: 5px;
+        }
+
+        /* Đẩy nút mũi tên phải ra lề wrapper 5px */
+
+        /* ==================== CSS KHỐI ĐỐI TÁC LIÊN KẾT (CẬP NHẬT TỶ LỆ 4/3) ==================== */
+        #brand {
+            width: 100%;
+            /* Nền vàng cát nhạt kết hợp họa tiết kiến trúc mờ sang trọng */
+            background: linear-gradient(rgba(245, 235, 220, 0.92), rgba(245, 235, 220, 0.92)),
+                url('https://www.transparenttextures.com/patterns/architect.png');
+            padding: 25px 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        /* KHUNG WRAPPER BAO NGOÀI */
+        .brand_wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 30px;
+            /* Khoảng trống an toàn cho 2 mũi tên điều hướng */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* KHUNG CHỨA HIỂN THỊ ĐỒNG THỜI 2 LOGO TRÊN MOBILE */
+        .brand_container {
+            display: flex;
+            overflow-x: auto;
+            /* Kích hoạt vuốt trượt ngang mượt mà bằng ngón tay */
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 12px;
+            /* Khoảng cách vừa phải giữa các thương hiệu */
+            width: 100%;
+        }
+
+        .brand_container::-webkit-scrollbar {
+            display: none;
+            /* Ẩn thanh cuộn mặc định */
+        }
+
+        /* THAY ĐỔI TẠI ĐÂY: Cấu hình lại kích thước card hiển thị đồng thời 2 khối */
+        .brand_card {
+            flex: 0 0 calc((100% - 12px) / 2);
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            box-sizing: border-box;
+        }
+
+        /* THAY ĐỔI TẠI ĐÂY: ÉP CHẶT KHUNG CHỨA LOGO SANG TỶ LỆ CHỮ NHẬT 4/3 */
+        .brand_card .logo-box {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            /* THAY ĐỔI CHÍNH: Ép buộc khung hình luôn đạt tỷ lệ 4:3 tinh tế */
+            background-color: #ffffff;
+            /* Nền trắng tinh khôi làm nổi bật logo hãng */
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-sizing: border-box;
+            opacity: 0.85;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Hiệu ứng tương tác tương tác sinh động khi hover hoặc chạm tay */
+        .brand_card:hover .logo-box {
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(139, 0, 0, 0.12);
+            /* Đổ bóng mờ quyện tông đỏ đô của sếp */
+        }
+
+        /* Định dạng ảnh logo co giãn tự nhiên, không bao giờ bị cắt hay bóp méo hình */
+        .brand_img {
+            max-width: 85%;
+            max-height: 85%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* HAI MŨI TÊN ĐIỀU HƯỚNG MÀU ĐEN MẢNH ĐÈ LÊN LOGO CHÍNH GIỮA CHIỀU CAO */
+        .brand_wrapper .brand-arrow {
+            position: absolute;
+            top: 50%;
+            /* Đặt chuẩn xác ở trọng tâm chiều cao khối tỉ lệ 4/3 */
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: #000000;
+            cursor: pointer;
+            z-index: 10;
+            padding: 5px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        .brand_wrapper .brand-arrow:hover {
+            opacity: 1;
+        }
+
+        .brand_wrapper .prev-brand {
+            left: 4px;
+        }
+
+        .brand_wrapper .next-brand {
+            right: 4px;
+        }
+
+        /* ==================== CSS CẤU HÌNH CHÂN TRANG FOOTER (MOBILE FIRST) ==================== */
+        #main-footer {
+            /* MÀU NỀN TỐI SANG TRỌNG: Sử dụng màu xám đen tuyền đối lập hoàn toàn với thân web */
+            background-color: #111111; 
+            padding: 40px 0 0 0;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            border-top: 3px solid #8B0000; /* Đường chỉ đỏ đô sang trọng định vị ranh giới footer */
+        }
+
+        /* KHUNG CHỨA TRUNG TÂM */
+        .footer_container {
+            width: 100%;
+            max-width: 1200px; /* Giới hạn chiều rộng tối đa khi lên màn hình PC lớn */
+            margin: 0 auto;
+            padding: 0 20px; /* Khoảng đệm an toàn 2 bên lề cho Mobile */
+            box-sizing: border-box;
+            
+            /* LAYOUT RESPONSIVE ĐỈNH CAO: Mặc định trên Mobile xếp thành 1 cột đứng thẳng hàng */
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 30px; /* Khoảng cách trống thông thoáng giữa các cột */
+        }
+
+        /* TIÊU ĐỀ CỘT: CHỮ IN HOA, MÀU TRẮNG, ĐẬM */
+        .footer_column_title {
+            color: #ffffff; /* Màu trắng tinh khôi nổi bần bật trên nền tối */
+            font-size: 15px;
+            font-weight: 700; /* Nét chữ siêu đậm, cứng cáp */
+            text-transform: uppercase; /* Ép buộc luôn luôn in hoa tiêu đề */
+            margin-bottom: 20px; /* Khoảng cách từ tiêu đề xuống nội dung phía dưới */
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        /* Đường gạch đỏ ngắn trang trí dưới mỗi tiêu đề cột cho quý phái */
+        .footer_column_title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 35px;
+            height: 2px;
+            background-color: #8B0000; /* Quy về tông màu đỏ đô chủ đạo của sếp Sơn */
+        }
+
+        /* NỘI DUNG BÊN TRONG CỘT (TEXT MÀU XÁM NHẠT) */
+        .footer_column_content {
+            color: #bbbbbb; /* Tông màu xám nhạt đảm bảo độ tương phản cao, siêu dễ đọc */
+            font-size: 13px;
+            line-height: 1.8; /* Khoảng cách dòng thoáng đãng, dễ tiếp nhận thông tin */
+        }
+
+        .company-name-highlight {
+            color: #ffffff; /* Làm nổi bật tên công ty HT Việt Nam bằng màu trắng */
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        /* ĐỊNH DẠNG DANH SÁCH ĐƯỜNG LINK Ở CỘT 2 VÀ CỘT 3 */
+        .footer_links_list {
+            list-style: none; /* Khử bỏ dấu chấm tròn mặc định */
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer_links_list li {
+            margin-bottom: 10px; /* Tạo khoảng cách đều đặn giữa các dòng text link */
+        }
+
+        .footer_links_list li a {
+            color: #bbbbbb; /* Màu chữ xám nhạt mặc định */
+            text-decoration: none; /* Khử đường gạch chân thô kệch */
+            transition: color 0.2s ease; /* Tạo độ trễ mượt mà khi di chuột */
+        }
+
+        /* HIỆU ỨNG HOVER: Rê chuột vào chữ sẽ sáng rực hoặc đổi sang tông đỏ đô */
+        .footer_links_list li a:hover {
+            color: #ffffff; /* Chữ sáng bừng lên màu trắng */
+            padding-left: 4px; /* Nhích nhẹ sang phải tạo hiệu ứng tương tác sinh động */
+            transition: all 0.2s ease;
+        }
+
+        /* ĐỊNH DẠNG CỘT 4 - KHỐI THÔNG TIN LIÊN HỆ CÓ ICON TRỰC QUAN */
+        .contact-info-block p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .contact-info-block p i {
+            color: #8B0000; /* Icon định vị, hotline mang sắc đỏ đô sang trọng */
+            font-size: 14px;
+            margin-top: 3px;
+        }
+
+        /* KHỐI ICON MẠNG XÃ HỘI TRÍCH XUẤT TỪ FILE GỐC CỦA SẾP */
+        .footer_social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .footer_social-icons .icon {
+            width: 32px;
+            height: 32px;
+            background-color: #222222; /* Nền khối icon xám mờ tinh tế */
+            color: #ffffff;
+            border-radius: 50%; /* Bo tròn xoe hoàn hảo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hiệu ứng rê chuột vào từng mạng xã hội của showroom */
+        .footer_social-icons .icon:hover {
+            background-color: #8B0000; /* Đổi sang màu đỏ đô khi tương tác */
+            transform: translateY(-3px); /* Nhấc nhẹ icon lên */
+        }
+
+        /* KHỐI DÒNG BẢN QUYỀN DƯỚI CÙNG (FOOTER BOTTOM) */
+        .footer_bottom_copyright {
+            background-color: #0a0a0a; /* Nền đen tuyền sâu thẳm tách biệt hoàn toàn */
+            padding: 15px 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #222222;
+        }
+
+        .footer_bottom_copyright p {
+            color: #777777; /* Text màu xám tối trầm tĩnh */
+            font-size: 11.5px;
+            line-height: 1.5;
+        }
+
+        /* ==================== CẤU HÌNH RESPONSIVE: TỰ ĐỘNG BẬT 4 CỘT TRÊN MÁY TÍNH (PC) ==================== */
+        @media (min-width: 768px) {
+            .footer_container {
+                /* LÊN MÀN HÌNH LỚN: Ép buộc chia thành đúng 4 cột đứng rộng bằng nhau tăm tắp */
+                grid-template-columns: repeat(4, 1fr); 
+                gap: 25px;
+            }
+            
+            #main-footer {
+                padding-top: 50px;
+            }
+        }
+    </style>
 </head>
-<style>
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Montserrat', sans-serif;
-        height: 100%;
-    }
-
-    .banner {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('phoi-canh.jpg');
-        height: 100vh;
-        width: 100%;
-        background-position: center;
-        background-size: cover;
-        top: 0;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .thanh-menu {
-        position: fixed;
-        top: 15px;
-        left: 50%;
-        transform: translate(-50%);
-        width: 90%;
-        max-width: 1300px;
-        background-color: white;
-        border-radius: 10px;
-        height: 65px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 20px;
-        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
-        z-index: 10000;
-    }
-
-    .menu-link {
-        display: flex;
-        gap: 60px;
-    }
-
-    .menu-link a {
-        text-decoration: none;
-        color: #333;
-        font-size: 13px;
-        font-weight: 500;
-    }
-
-    .search-box {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    .material-symbols-outlined {
-        font-weight: 300;
-        font-size: 30px;
-        color: #333;
-        transition: 0.3s;
-    }
-
-    .Banner-noi-dung {
-        position: absolute;
-        top: 680px;
-        left: 50%;
-        transform: translate(-50%);
-        width: 90%;
-        max-width: 1300px;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 20px;
-        color: white;
-    }
-
-    .Banner-noi-dung p {
-        letter-spacing: 3px;
-        text-transform: uppercase;
-    }
-
-    .Banner-noi-dung h1 {
-        font-size: 500%;
-        font-weight: 500;
-        margin-top: -10px;
-        letter-spacing: -1px;
-    }
-
-    .Banner-noi-dung a {
-        display: inline-block;
-        text-decoration: none;
-        color: white;
-        letter-spacing: 3px;
-        margin-top: 20px;
-        border: 1px solid white;
-        padding: 12px 10px;
-        border-radius: 30px;
-    }
-
-    .show-ct1 {
-        display: flex;
-        margin-top: 60px;
-        padding: 0 280px;
-        gap: 130px;
-    }
-
-    .van-ban-chuan {
-        margin-top: 200px;
-    }
-
-    .tieu-de-lon {
-        font-weight: 400;
-    }
-
-    .van-ban-chuan h1 .tieu-de-lon {
-        font-weight: 450;
-        color: #333;
-        letter-spacing: -1px;
-    }
-
-    .van-ban-chuan a {
-        display: inline-block;
-        padding: 12px 10px;
-        text-decoration: none;
-        color: #333;
-        border-radius: 30px;
-        border: 1px solid #333;
-        margin-top: 20px;
-    }
-
-    .mui-ten {
-        color: #333;
-    }
-
-    .show-ct1 img {
-        border-radius: 15px;
-        width: 50%;
-        aspect-ratio: 1/1;
-        object-fit: cover;
-    }
-
-    .show-ct2 {
-        display: flex;
-        margin-top: 100px;
-        padding: 0 280px;
-        gap: 130px;
-    }
-
-    .show-ct2 img {
-        border-radius: 15px;
-        width: 50%;
-        aspect-ratio: 4/3;
-        object-fit: cover;
-    }
-
-    .van-ban-chuan .tieu-de-lon p {
-        font-weight: 400;
-        color: #333;
-    }
-
-    .thanh-san-pham {
-        background-color: #F5F5F5;
-        width: 100%;
-        height: 800px;
-        padding: 1px 280px;
-        margin-top: 60px;
-    }
-
-    .thanh-san-pham__header {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-end;
-        gap: 200px;
-        margin-top: 50px;
-        margin-bottom: 30px;
-    }
-
-    .list-san-pham {
-        display: flex;
-        gap: 30px 25px;
-    }
-
-    .menu-sanpham {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        align-items: center;
-        background-color: white;
-        border-radius: 40px;
-    }
-
-    .menu-sanpham a {
-        display: inline-block;
-        text-decoration: none;
-        color: #333;
-        padding: 15px 20px;
-
-    }
-
-    .thanh-san-pham .van-ban-chuan {
-        margin-top: 0;
-        max-width: 600px;
-    }
-
-    .san-pham img {
-        border-radius: 20px;
-    }
-
-    .san-pham h2 {
-        font-weight: 500;
-        color: #333;
-        letter-spacing: -1px;
-        margin-top: 20px;
-    }
-
-    .highlight {
-        background-color: white;
-        width: 100%;
-        padding-bottom: 50px;
-    }
-
-    .highlight .van-ban-chuan {
-        margin-top: 20px;
-    }
-
-    .highlight__ong .van-ban-chuan .tieu-de-lon {
-        margin-bottom: 40px;
-    }
-
-    .tieu-de-nho {
-        font-weight: 400;
-        margin-bottom: 20px;
-    }
-
-    .highlight__ong {
-        padding: 50px 280px;
-        align-items: center;
-        width: 100%;
-    }
-
-    .highlight__body_bo {
-        display: flex;
-        gap: 150px;
-    }
-
-    .cum-van-ban {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-    }
-
-    .footer {
-        background-color: #1F2529;
-        height: 500px;
-    }
-
-    .highlight__body_con img {
-        border-radius: 20px;
-        aspect-ratio: 16/9;
-        object-fit: cover;
-    }
-
-    .nut-chuyen-tiep {
-        border: 1px solid #333;
-        padding: 12px 10px;
-        border-radius: 20px;
-    }
-
-    .nut-chuyen-tiep a {
-        text-decoration: none;
-        color: #333;
-    }
-
-    .cum-dieu-huong {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        margin-top: 35px;
-    }
-
-    .nut-tron {
-        border-radius: 50%;
-        border: 1px solid #333;
-        height: 45px;
-        width: 45px;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        padding: 0;
-        background: transparent;
-    }
-
-    .nut-tron .material-symbols-outlined {
-        font-size: 24px;
-        font-variation-settings: 'wght' 200;
-    }
-
-    .highlight .cum-dieu-huong .nut-tron {
-        margin-top: -30px;
-    }
-
-    .footer {
-        padding: 50px 280px;
-    }
-
-    .footer_ong {
-        display: flex;
-        gap: 100px;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-
-    .footer-cha_all_head {
-        display: flex;
-        gap: 50px;
-        margin-left: -450px;
-    }
-
-    .footer_ong .logo {
-        color: white;
-        font-size: 20px;
-        line-height: 1;
-        margin-top: 0;
-        font-weight: 800;
-    }
-
-    .link-footer a {
-        text-decoration: none;
-        color: white;
-        display: block;
-        margin-bottom: 20px;
-        font-size: 13px;
-    }
-    .duong-ke {
-        border: 0;
-        border-top: 1px solid rgba(254,254,254,0.3);
-        width: 100%;
-        margin-top: 40px;
-    }
-    .van-ban-ps {
-        color: white;
-        width: 50%;
-        font-size: 12px;
-        margin: 10px;
-    }
-</style>
 
 <body>
-    <nav class="thanh-menu">
-        <div class="logo">
-            AN GIA
-        </div>
-        <div class="menu-link">
-            <a href="#">Sản Phẩm</a>
-            <a href="#">Dự Án</a>
-            <a href="#">Chuyên Gia</a>
-            <a href="#">Công Ty</a>
-            <a href="#">Catalog</a>
-            <a href="#">Contact</a>
-        </div>
-        <div class="search-box">
-            <span class="material-symbols-outlined">search</span>
-        </div>
-    </nav>
-    <div class="banner">
-        <div class="Banner-noi-dung">
-            <p>Nâng tầm không gian sống của bạn</p>
-            <h1>An Gia</h1>
-            <a href="#" class="nut-collection">
-                Khám phá bộ sưu tập
-                <span class="mui-ten">&rarr;</span>
+    <section id="header">
+        <div class="header_head">
+            <a href="#" class="link_menu">Showroom: 159 Khuất Duy Tiến, Thanh Xuân, Hà Nội</a>
+            <a href="#" class="link_menu">Có chỗ đậu xe
             </a>
+            <a href="#" class="link_menu">Giờ làm việc: 08:00 - 17:30 từ Thứ 2 - Thứ 7</a>
         </div>
-    </div>
-    <div class="show-ct1">
-        <div class="van-ban-chuan">
-            <h1 class="tieu-de-lon">
-                Bằng khát vọng vươn tầm và sự tận tâm, chúng tôi tuyển chọn những mẫu gạch tinh tế nhất để nâng tầm
-                ngôi
-                nhà Việt.
-            </h1>
-            <a href="#" class="nut-collection">
-                Khám phá cùng tôi
-                <span class="mui-ten">&rarr;</span>
-            </a>
+        <div class="header_icon-logo">
+            <div class="mobile-icon-left">
+                <a href="#" class="icon-link"><i class="fa-solid fa-bars"></i></a>
+            </div>
+            <div class="logo"><img src="logoAG.jpg" alt=""></div>
+            <div class="mobile-icon-right">
+                <a href="#" class="icon-link"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
         </div>
-        <img src="show-ct1.jpg" alt="">
+        <nav class="header_menu-bar">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Tìm kiếm...">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
 
+
+            <div class="menu-bar_de_muc">
+                <a href="#">trang chủ</a>
+                <a href="#">gạch nhập khẩu</a>
+                <a href="#">gạch trong nước</a>
+                <a href="#">thiết bị vệ sinh</a>
+                <a href="#">sàn gỗ công nghiệp</a>
+                <a href="#">đá ốp lát</a>
+                <a href="#">thiết bị bếp</a>
+                <a href="#">vật tư thi công ốp lát</a>
+                <a href="#">sản phẩm khuyến mãi</a>
+                <a href="#">liên hệ</a>
+            </div>
+        </nav>
+    </section>
+
+    <section id="hero-slider">
+        <div class="slider-container">
+            <img src="phoi-canh.jpg" alt="">
+        </div>
+        <div class="button-dieu-huong">
+            <button class="nut-trai"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="nut-phai"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="slider-dot">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <section id="best-seller">
+        <div class="best-seller_header">
+            <h1 class="van-ban_tieu-de">sản phẩm bán chạy</h1>
+        </div>
+        <div class="best-seller_container">
+            <div class="best-seller_container_item">
+                <img src="mable.jpg" class="seller_item_img" alt="">
+                <h3 class="item_name">gạch mable</h3>
+                <p class="item_size">120x120cm</p>
+                <p class="item_price">425.000đ</p>
+            </div>
+            <div class="best-seller_container_item">
+                <img src="gach-gia-go.jpeg" class="seller_item_img" alt="">
+                <h3 class="item_name">gạch giả gỗ</h3>
+                <p class="item_size">120x120cm</p>
+                <p class="item_price">600.000đ</p>
+            </div>
+            <div class="best-seller_container_item">
+                <img src="mable.jpg" class="seller_item_img" alt="">
+                <h3 class="item_name">gạch mable</h3>
+                <p class="item_size">120x120cm</p>
+                <p class="item_price">425.000đ</p>
+            </div>
+            <div class="best-seller_container_item">
+                <img src="gach-men-kc.jpg" class="seller_item_img" alt="">
+                <h3 class="item_name">gạch men kim cương</h3>
+                <p class="item_size">120x120cm</p>
+                <p class="item_price">410.000đ</p>
+            </div>
+            <div class="best-seller_container_item">
+                <img src="wood.jpg" class="seller_item_img" alt="">
+                <h3 class="item_name">gạch vân gỗ</h3>
+                <p class="item_size">120x120cm</p>
+                <p class="item_price">500.000đ</p>
+            </div>
+        </div>
+        <div class="best-seller_pagination">
+            <div class="pagination-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="product-categories">
+        <div class="product-categories_header">
+            <span class="divider-line"></span>
+            <h2 class="categories-title">Danh mục sản phẩm</h2>
+            <span class="divider-line"></span>
+        </div>
+
+        <div class="product-categories_container">
+
+            <div class="product-categories_container_item">
+                <img src="noi-that-1.jpg" Gạch nhập khẩu An Gia" class="categories_img">
+                <div class="dark-overlay"></div>
+                <div class="categories_text_content">
+                    <h3 class="item_tieu-de">Gạch nhập khẩu</h3>
+                </div>
+            </div>
+
+            <div class="product-categories_container_item">
+                <img src="noi-that-2.jpg" alt="Gạch trong nước An Gia" class="categories_img">
+                <div class="dark-overlay"></div>
+                <div class="categories_text_content">
+                    <h3 class="item_tieu-de">Gạch trong nước</h3>
+                </div>
+            </div>
+
+            <div class="product-categories_container_item">
+                <img src="kitchen-1.jpg" alt="Thiết bị bếp An Gia" class="categories_img">
+                <div class="dark-overlay"></div>
+                <div class="categories_text_content">
+                    <h3 class="item_tieu-de">Thiết bị bếp</h3>
+                </div>
+            </div>
+
+            <div class="product-categories_container_item">
+                <img src="wood-flooring.jpg" alt="Sàn gỗ công nghiệp An Gia" class="categories_img">
+                <div class="dark-overlay"></div>
+                <div class="categories_text_content">
+                    <h3 class="item_tieu-de">Sàn gỗ công nghiệp</h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="new-item">
+        <div class="new-item_header">
+            <span class="divider-line"></span>
+            <h2 class="new-item-title">Sản phẩm mới</h2>
+            <span class="divider-line"></span>
+        </div>
+
+        <div class="new-item_wrapper">
+            <button class="nav-arrow prev-arrow"><i class="fa-solid fa-chevron-left"></i></button>
+
+            <div class="new-item_container">
+
+                <div class="new-item_container_item">
+                    <div class="img-box">
+                        <div class="brand-logo-small">AG</div>
+                        <span class="discount-badge">-20%</span>
+                        <img src="ceramic-1.jpg" class="new_item_img" alt="GẠCH VÂN ĐÁ TRAVETINE">
+                    </div>
+                    <h3 class="item_name">GẠCH VÂN ĐÁ TRAVETINE 612G-T41/GP-T41HPTCR</h3>
+                    <p class="item_size">(60x120cm)</p>
+                    <div class="item_price-box">
+                        <span class="price-old">552.000 đ</span>
+                        <span class="price-new">442.000 <span class="currency-symbol">đ</span></span>
+                    </div>
+                </div>
+
+                <div class="new-item_container_item">
+                    <div class="img-box">
+                        <div class="brand-logo-small">AG</div>
+                        <span class="discount-badge">-20%</span>
+                        <img src="ceramic-2.jpg" class="new_item_img" alt="GẠCH VÂN ĐÁ 80SH">
+                    </div>
+                    <h3 class="item_name">GẠCH VÂN ĐÁ 80SH-GMST04LKVL</h3>
+                    <p class="item_size">(80x80cm)</p>
+                    <div class="item_price-box">
+                        <span class="price-old">350.000 đ</span>
+                        <span class="price-new">280.000 <span class="currency-symbol">đ</span></span>
+                    </div>
+                </div>
+
+                <div class="new-item_container_item">
+                    <div class="img-box">
+                        <div class="brand-logo-small">AG</div>
+                        <span class="discount-badge">-20%</span>
+                        <img src="ceramic-3.png" class="new_item_img" alt="Sản phẩm test">
+                    </div>
+                    <h3 class="item_name">GẠCH THẠCH ANH CAO CẤP AN GIA</h3>
+                    <p class="item_size">(60x60cm)</p>
+                    <div class="item_price-box">
+                        <span class="price-old">450.000 đ</span>
+                        <span class="price-new">360.000 <span class="currency-symbol">đ</span></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="nav-arrow next-arrow"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <div class="new-item_pagination">
+            <div class="pagination-dots">
+                <span class="dot-small"></span>
+                <span class="dot-small"></span>
+                <span class="dot-small active"></span> <span class="dot-small"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="room-gallery">
+        <div class="room-gallery_header">
+            <span class="divider-line"></span>
+            <h2 class="gallery-title">Phối cảnh</h2>
+            <span class="divider-line"></span>
+        </div>
+
+        <div class="room-gallery_container">
+
+            <div class="room-gallery_item">
+                <img src="phong-khach.jpg" alt="Phối cảnh phòng khách An Gia" class="gallery_img">
+                <div class="gallery-overlay"></div>
+                <div class="gallery_text_content">
+                    <h3 class="gallery_item_title">Phòng khách</h3>
+                </div>
+            </div>
+
+            <div class="room-gallery_item">
+                <img src="phong-ngu.jpg" alt="Phối cảnh phòng ngủ An Gia" class="gallery_img">
+                <div class="gallery-overlay"></div>
+                <div class="gallery_text_content">
+                    <h3 class="gallery_item_title">Phòng ngủ</h3>
+                </div>
+            </div>
+
+            <div class="room-gallery_item">
+                <img src="kitchen-2.jpg" alt="Phối cảnh phòng bếp An Gia" class="gallery_img">
+                <div class="gallery-overlay"></div>
+                <div class="gallery_text_content">
+                    <h3 class="gallery_item_title">Phòng bếp</h3>
+                </div>
+            </div>
+
+            <div class="room-gallery_item">
+                <img src="wc.jpg" alt="Phối cảnh nhà vệ sinh An Gia" class="gallery_img">
+                <div class="gallery-overlay"></div>
+                <div class="gallery_text_content">
+                    <h3 class="gallery_item_title">Nhà vệ sinh</h3>
+                </div>
+            </div>
+
+            <div class="room-gallery_item">
+                <img src="lobby.jpg" alt="Phối cảnh đại sảnh An Gia" class="gallery_img">
+                <div class="gallery-overlay"></div>
+                <div class="gallery_text_content">
+                    <h3 class="gallery_item_title">Đại sảnh</h3>
+                </div>
+            </div>
+
+            <div class="room-gallery_item">
+                <img src="bancong.jpg" alt="Phối cảnh ban công An Gia" class="gallery_img">
+                <div class="gallery-overlay"></div>
+                <div class="gallery_text_content">
+                    <h3 class="gallery_item_title">Ban công</h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="floating-contact-widgets">
+        <a href="https://zalo.me/09xxxxxxxx" target="_blank" class="contact-btn zalo-btn">
+            <span class="ripple-wave"></span>
+            <span class="ripple-wave"></span>
+            <span class="zalo-text">Zalo</span>
+        </a>
+        <a href="tel:09xxxxxxxx" class="contact-btn phone-btn">
+            <i class="fa-solid fa-phone phone-icon-rotate"></i>
+        </a>
     </div>
-    <div class="show-ct2">
-        <img src="show-ct2.jpg" alt="">
-        <div class="van-ban-chuan">
-            <h1 class="tieu-de-lon">
-                Khám phá những bộ sưu tập mới nhất
-            </h1>
-            <p class="mo-ta">Hãy để những bộ sưu tập mới tại An Gia khơi nguồn cảm hứng cho bạn. Các sản phẩm được tuyển
-                chọn để định
-                hình phong cách sống đương đại và đáp ứng hoàn hảo mọi yêu cầu khắt khe của các dự án thiết kế.</p>
-            <a href="#" class="nut-collection">
-                Xem thêm
-                <span class="mui-ten">&rarr;</span>
-            </a>
+
+    <section id="latest-new">
+        <div class="latest-new_header">
+            <span class="divider-line"></span>
+            <h2 class="latest-new-title">Tin tức mới</h2>
+            <span class="divider-line"></span>
         </div>
-    </div>
-    <div class="thanh-san-pham">
-        <div class="thanh-san-pham__header">
-            <div class="van-ban-chuan">
-                <h1 class="tieu-de-lon">
-                    Sản phẩm của chúng tôi
-                </h1>
-                <p class="mo-ta">Tìm kiếm cái đẹp là bản năng nguyên bản của con người. Tại An Gia, bản năng sáng tạo ấy
-                    được hòa
-                    quyện cùng tâm huyết và công nghệ sản xuất hiện đại để tạo nên những không gian sống đẳng cấp.
-                </p>
-            </div>
-            <div class="menu-sanpham">
-                <a href="#">Vân đá</a>
-                <a href="#">Không gian</a>
-                <a href="#">Thực tế</a>
-                <a href="#">Xuất xứ</a>
-            </div>
-        </div>
-        <div class="list-san-pham">
-            <div class="san-pham">
-                <img src="stone 1.jpg" alt="Stone">
-                <h2>Stone</h2>
-            </div>
-            <div class="san-pham">
-                <img src="mable.jpg" alt="Mable">
-                <h2>Mable</h2>
-            </div>
-            <div class="san-pham">
-                <img src="wood.jpg" alt="wood">
-                <h2>Wood</h2>
-            </div>
-            <div class="san-pham">
-                <img src="concrete.jpg" alt="Concrete">
-                <h2>Concrete</h2>
-            </div>
-            <div class="san-pham">
-                <img src="metal.jpg" alt="metal">
-                <h2>Metal</h2>
-            </div>
-        </div>
-        <div class="cum-dieu-huong">
-            <button class="nut-tron nut-dieu-huong-trai">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </button>
-            <button class="nut-tron nut-dieu-huong-phai">
-                <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-        </div>
-    </div>
-    <div class="highlight">
-        <div class="highlight__ong">
-            <div class="van-ban-chuan">
-                <h1 class="tieu-de-lon">Highlight</h1>
-            </div>
-            <div class="highlight__body_bo">
-                <div class="highlight__body_con">
-                    <img src="highlight1.jpg" alt="">
-                    <div class="cum-van-ban">
-                        <div class="van-ban-chuan">
-                            <h2 class="tieu-de-nho">Elitique</h2>
-                            <p>The luxury bathroom destination: an outstanding collaboration between An Gia and Florim
-                            </p>
+
+        <div class="latest-new_wrapper">
+            <button class="news-arrow prev-news"><i class="fa-solid fa-chevron-left"></i></button>
+
+            <div class="latest-new_container">
+
+                <div class="latest-new_card">
+                    <div class="news-img-box">
+                        <div class="date-badge">
+                            <span class="date-day">22</span>
+                            <span class="date-month">Th5</span>
                         </div>
-                        <div class="nut-chuyen-tiep">
-                            <a href="#" class="nut-collection">
-                                Discover more
-                                <span class="mui-ten">&rarr;</span>
-                            </a>
+                        <img src="ceramic-5.jpg" alt="Tin tức An Gia 1" class="news_img">
+                    </div>
+                    <h3 class="news_title">Tại sao bạn nên lựa chọn gạch Trung Quốc tại Showroom An Gia?</h3>
+                    <div class="news-bottom-divider"></div>
+                </div>
+
+                <div class="latest-new_card">
+                    <div class="news-img-box">
+                        <div class="date-badge">
+                            <span class="date-day">23</span>
+                            <span class="date-month">Th5</span>
                         </div>
+                        <img src="kitchen-3.jpg" alt="Tin tức An Gia 2" class="news_img">
                     </div>
-
+                    <h3 class="news_title">Xu hướng lựa chọn gạch ốp lát gạch men bóng kính cao cấp năm 2026</h3>
+                    <div class="news-bottom-divider"></div>
                 </div>
-                <div class="highlight__body_con">
-                    <img src="highlight2.jpg" alt="">
-                    <div class="van-ban-chuan">
-                        <h2 class="tieu-de-nho">CarbonZero</h2>
-                        <p>TAn Gia Carbon Neutral surfaces that offset all CO2 emitted during the surfaces life cycle.
-                        </p>
+
+                <div class="latest-new_card">
+                    <div class="news-img-box">
+                        <div class="date-badge">
+                            <span class="date-day">24</span>
+                            <span class="date-month">Th5</span>
+                        </div>
+                        <img src="lobby-1.jpg" alt="Tin tức An Gia 3" class="news_img">
+                    </div>
+                    <h3 class="news_title">Bí quyết phối màu gạch lát nền và sơn tường cho phòng khách sang trọng</h3>
+                    <div class="news-bottom-divider"></div>
+                </div>
+
+                <div class="latest-new_card">
+                    <div class="news-img-box">
+                        <div class="date-badge">
+                            <span class="date-day">25</span>
+                            <span class="date-month">Th5</span>
+                        </div>
+                        <img src="ceramic-6.jpg" alt="Tin tức An Gia 4" class="news_img">
+                    </div>
+                    <h3 class="news_title">Hướng dẫn kiểm tra chất lượng gạch ốp tường khi nhận bàn giao công trình</h3>
+                    <div class="news-bottom-divider"></div>
+                </div>
+
+
+                <button class="news-arrow next-news"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+    </section>
+
+    <section id="brand">
+        <div class="brand_wrapper">
+            <button class="brand-arrow prev-brand"><i class="fa-solid fa-chevron-left"></i></button>
+
+            <div class="brand_container">
+
+                <div class="brand_card">
+                    <div class="logo-box">
+                        <img src="salice-paolo.jpg" alt="Logo Salice Paolo An Gia" class="brand_img">
+                    </div>
+                </div>
+
+                <div class="brand_card">
+                    <div class="logo-box">
+                        <img src="toto.jpg" alt="Logo TOTO An Gia" class="brand_img">
+                    </div>
+                </div>
+
+                <div class="brand_card">
+                    <div class="logo-box">
+                        <img src="ariston.jpg" alt="Logo Ariston An Gia" class="brand_img">
+                    </div>
+                </div>
+
+                <div class="brand_card">
+                    <div class="logo-box">
+                        <img src="caesar.jpg" alt="Logo Caesar An Gia" class="brand_img">
+                    </div>
+                </div>
+
+                <div class="brand_card">
+                    <div class="logo-box">
+                        <img src="ferroli.jpg" alt="Logo Ferroli An Gia" class="brand_img">
+                    </div>
+                </div>
+
+                <div class="brand_card">
+                    <div class="logo-box">
+                        <img src="grohe.jpg" alt="Logo Grohe An Gia" class="brand_img">
+                    </div>
+                </div>
+
+                <div class="brand_card">
+                    <div class="logo-box">
+                        <img src="linax.jpg" alt="Logo Linax An Gia" class="brand_img">
+                    </div>
+                </div>
+
+                <div class="brand_card">
+                    <div class="logo-box">
+                        <img src="lowen.jpg" alt="Logo Lowen An Gia" class="brand_img">
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="brand-arrow next-brand"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <footer id="main-footer">
+        <div class="footer_container">
+            
+            <div class="footer_column">
+                <h4 class="footer_column_title">SHOWROOM AN GIA</h4>
+                <div class="footer_column_content">
+                    <p class="company-name-highlight">CÔNG TY TNHH ĐẦU TƯ THƯƠNG MẠI VÀ XÂY DỰNG HT VIỆT NAM</p>
+                    <p>Chuyên cung cấp gạch ốp lát, gạch men bóng kính cao cấp và vật liệu xây dựng sang trọng cho mọi công trình.</p>
+                    
+                    <div class="footer_social-icons">
+                        <a href="#" class="icon facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="icon tiktok"><i class="fa-brands fa-tiktok\"></i></a>
+                        <a href="#" class="icon pinterest"><i class="fa-brands fa-pinterest\"></i></a>
+                        <a href="#" class="icon youtube"><i class="fa-brands fa-youtube\"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="cum-dieu-huong">
-            <button class="nut-tron nut-dieu-huong-trai">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </button>
-            <button class="nut-tron nut-dieu-huong-phai">
-                <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="footer_ong">
-            <div class="logo">AN GIA</div>
-            <div class="footer-cha_all_head">
-                <div class="footer_cha_1">
-                    <div class="link-footer">
-                        <a href="#">Về chúng tôi</a>
-                        <a href="#">Hệ thống Showroom</a>
-                        <a href="#">Dự án tiêu biểu</a>
-                        <a href="#">Tuyển dụng</a>
-                    </div>
-                </div>
-                <div class="footer_cha_2">
-                    <div class="link-footer">
-                        <a href="#">Hướng dẫn thi công</a>
-                        <a href="#">Chính sách bảo hành</a>
-                        <a href="#">Tư vấn kỹ thuật</a>
-                        <a href="#">Catalog sản phẩm</a>
-                    </div>
-                </div>
-                <div class="footer_cha_3">
-                    <div class="link-footer">
-                        <a href="#">Địa chỉ Showroom</a>
-                        <a href="#">Hotline hỗ trợ</a>
-                        <a href="#">Email báo giá</a>
-                        <a href="#">Giờ làm việc</a>
-                    </div>
+
+            <div class="footer_column">
+                <h4 class="footer_column_title">DANH MỤC PHỐI CẢNH</h4>
+                <div class="footer_column_content">
+                    <ul class="footer_links_list">
+                        <li><a href="#">Phối cảnh phòng khách</a></li>
+                        <li><a href="#">Phối cảnh phòng ngủ</a></li>
+                        <li><a href="#">Phối cảnh phòng bếp</a></li>
+                        <li><a href="#">Phối cảnh nhà vệ sinh</a></li>
+                        <li><a href="#">Phối cảnh đại sảnh</a></li>
+                        <li><a href="#">Phối cảnh ban công</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-cha_right"></div>
-        </div>
-        <hr class="duong-ke">
-        <div class="footer_ong_down">
-            <div class="footer-cha_all_down">
-                <div class="cum-van-ban">
-                    <div class="van-ban-ps">
-                        <p>Registered office: Via Canaletto 24, 41042 Fiorano Modenese. — Companies Register of
-                            Modena No. 01265320364. — Share Capital fully paid-up Euro 50,000,000 VAT No./Tax Code
-                            01265320364 — Copyright © 2025 Florim Ceramiche S.p.A. SB sole shareholder company.</p>
-                    </div>
+
+            <div class="footer_column">
+                <h4 class="footer_column_title">CHÍNH SÁCH DỊCH VỤ</h4>
+                <div class="footer_column_content">
+                    <ul class="footer_links_list">
+                        <li><a href="#">Chính sách bảo hành gạch</a></li>
+                        <li><a href="#">Vận chuyển & Giao nhận tận công trình</a></li>
+                        <li><a href="#">Chính sách đổi trả hàng hóa</a></li>
+                        <li><a href="#">Hướng dẫn thanh toán</a></li>
+                        <li><a href="#">Tư vấn phối cảnh 3D miễn phí</a></li>
+                    </ul>
                 </div>
             </div>
+
+            <div class="footer_column">
+                <h4 class="footer_column_title">THÔNG TIN LIÊN HỆ</h4>
+                <div class="footer_column_content contact-info-block">
+                    <p><i class="fa-solid fa-location-dot"></i> Địa chỉ: 888 Nguyễn Khoái, Hà Nội</p>
+                    <p><i class="fa-solid fa-envelope"></i> Email: contact@htvietnam.vn</p>
+                    <p><i class="fa-solid fa-phone"></i> Hotline: 09xx xxx xxx</p>
+                    <p><i class="fa-solid fa-clock"></i> Giờ mở cửa: 08:00 - 21:00 hàng ngày</p>
+                </div>
+            </div>
+
         </div>
 
+        <div class="footer_bottom_copyright">
+            <p>Copyright 2026 © CTY TNHH Đầu Tư Thương Mại và Xây Dựng HT Việt Nam. Showroom An Gia</p>
+        </div>
+    </footer>
 
-    </div>
+
+
+
+    <script>
+        // Lấy phần tử container chứa các sản phẩm
+        const container = document.querySelector('.best-seller_container');
+        // Lấy nút mũi tên Bên Trái
+        const prevBtn = document.querySelector('.prev-arrow');
+        // Lấy nút mũi tên Bên Phải
+        const nextBtn = document.querySelector('.next-arrow');
+
+        // Lắng nghe sự kiện khi anh Sơn bấm vào nút Mũi tên Phải
+        nextBtn.addEventListener('click', () => {
+            // Cuộn sang phải một khoảng bằng đúng chiều rộng của container để sang 2 hình tiếp theo
+            container.scrollLeft += container.offsetWidth;
+        });
+
+        // Lắng nghe sự kiện khi anh Sơn bấm vào nút Mũi tên Trái
+        prevBtn.addEventListener('click', () => {
+            // Cuộn ngược sang trái một khoảng bằng đúng chiều rộng của container để về 2 hình trước
+            container.scrollLeft -= container.offsetWidth;
+        });
+    </script>
 </body>
 
 </html>

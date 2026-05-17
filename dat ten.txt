@@ -1,0 +1,41 @@
+1. Header (Thanh điều hướng)
+Bao gồm: Logo, Menu, Hotline, Giỏ hàng (hình image_aedaa2.png).
+
+Tên đề xuất: <header> hoặc <nav class="navbar">.
+
+Ghi chú: Đây là phần cố định ở đầu trang.
+
+2. Banner/Hero Section (Slider)
+Bao gồm: Các tấm ảnh lớn chạy slide giới thiệu "Gạch Nhập Khẩu" (hình image_aedaa2.png).
+
+Tên đề xuất: <section id="hero-slider">.
+
+3. Sản phẩm bán chạy (Best Sellers)
+Bao gồm: Danh sách các mẫu gạch có gắn nhãn giảm giá -22%, -25% (hình image_aeda85.png).
+
+Tên đề xuất: <section id="best-sellers">.
+
+4. Danh mục sản phẩm (Categories)
+Bao gồm: 4 khối lớn: Gạch nhập khẩu, Gạch trong nước, Thiết bị bếp, Sàn gỗ (hình image_aeda80.png).
+
+Tên đề xuất: <section id="product-categories">.
+
+5. Phối cảnh (Room Inspiration)
+Bao gồm: Các ô ảnh về Phòng khách, Phòng ngủ, Nhà vệ sinh... giúp khách hình dung gạch khi lên sàn (hình image_aeda66.png).
+
+Tên đề xuất: <section id="room-gallery"> hoặc <section id="phoi-canh">.
+
+6. Tin tức mới (News/Blog)
+Bao gồm: Các bài viết tư vấn như "5 lưu ý khi vệ sinh sàn đá", "Trang trí nhà bếp..." (hình image_aeda60.png).
+
+Tên đề xuất: <section id="latest-news">.
+
+7. Đối tác/Thương hiệu (Partners)
+Bao gồm: Logo của các hãng như Ariston, Toto, Inax... (hình image_aeda60.png).
+
+Tên đề xuất: <section id="brands">.
+
+8. Footer (Chân trang)
+Bao gồm: Thông tin công ty, địa chỉ showroom, chính sách bán hàng (hình image_aeda44.png).
+
+Tên đề xuất: <footer>.
