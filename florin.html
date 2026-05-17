@@ -114,15 +114,12 @@
     .show-ct1 {
         display: flex;
         margin-top: 60px;
-        padding: 0 max(20px, (100% - 1360px) / 2);
+        padding: 0 280px;
         gap: 130px;
-        flex-wrap: wrap-reverse;
     }
 
     .van-ban-chuan {
         margin-top: 200px;
-        flex: 1;
-        min-width: 300px;
     }
 
     .tieu-de-lon {
@@ -151,20 +148,16 @@
 
     .show-ct1 img {
         border-radius: 15px;
-        flex: 0 1 500px;
+        width: 50%;
         aspect-ratio: 1/1;
         object-fit: cover;
-        width: 100%;
-        max-width: 500px;
-
     }
 
     .show-ct2 {
         display: flex;
         margin-top: 100px;
-        padding: 0 max(20px, (100% - 1360px) / 2);
+        padding: 0 280px;
         gap: 130px;
-        flex-wrap: wrap;
     }
 
     .show-ct2 img {
@@ -237,7 +230,6 @@
     .highlight {
         background-color: white;
         width: 100%;
-        padding-bottom: 50px;
     }
 
     .highlight .van-ban-chuan {
@@ -263,7 +255,6 @@
         display: flex;
         gap: 150px;
     }
-
     .cum-van-ban {
         display: flex;
         align-items: flex-end;
@@ -286,166 +277,22 @@
         padding: 12px 10px;
         border-radius: 20px;
     }
-
     .nut-chuyen-tiep a {
         text-decoration: none;
         color: #333;
     }
-
     .cum-dieu-huong {
         display: flex;
         justify-content: center;
-        gap: 12px;
-        margin-top: 35px;
+        gap: 17px;
     }
-
     .nut-tron {
-        border-radius: 50%;
+        width: 50px;
+        height: 50px;
         border: 1px solid #333;
-        height: 45px;
-        width: 45px;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        padding: 0;
+        border-radius: 50%;
         background: transparent;
-    }
-
-    .nut-tron .material-symbols-outlined {
-        font-size: 24px;
-        font-variation-settings: 'wght' 200;
-    }
-
-    .highlight .cum-dieu-huong .nut-tron {
-        margin-top: -30px;
-    }
-
-    .footer {
-        padding: 50px 280px;
-    }
-
-    .footer_ong {
-        display: flex;
-        gap: 100px;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-
-    .footer-cha_all_head {
-        display: flex;
-        gap: 50px;
-        margin-left: -450px;
-    }
-
-    .footer_ong .logo {
-        color: white;
-        font-size: 20px;
-        line-height: 1;
-        margin-top: 0;
-        font-weight: 800;
-    }
-
-    .link-footer a {
-        text-decoration: none;
-        color: white;
-        display: block;
-        margin-bottom: 20px;
-        font-size: 13px;
-    }
-
-    .duong-ke {
-        border: 0;
-        border-top: 1px solid rgba(254, 254, 254, 0.3);
-        width: 100%;
-        margin-top: 40px;
-    }
-
-    .van-ban-ps {
-        color: white;
-        width: 50%;
-        font-size: 12px;
-        margin: 10px;
-    }
-
-    @media (max-width: 768px) {
-
-        /* 1. Căn giữa toàn bộ khối cha */
-        html,
-        body {
-            overflow-x: hidden;
-            /* Ngăn chặn việc bị lệch sang ngang */
-            width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        .show-ct1 {
-            padding: 0 20px !important;
-            /* Đây là khoảng cách 2 bên viền */
-            flex-wrap: wrap-reverse !important;
-            justify-content: center !important;
-            /* Căn giữa ảnh */
-            gap: 20px !important;
-        }
-
-        .show-ct2 {
-            padding: 0 20px !important;
-            /* Đây là khoảng cách 2 bên viền */
-            flex-wrap: wrap !important;
-            justify-content: center !important;
-            /* Căn giữa ảnh */
-            gap: 20px !important;
-        }
-
-        /* 2. Căn giữa văn bản và các thành phần bên trong */
-        .van-ban-chuan {
-            margin-top: 20px !important;
-            margin-left: 0 !important;
-            /* THÊM DÒNG NÀY: Xóa lề trái bị lệch */
-            width: 100% !important;
-            /* THÊM DÒNG NÀY: Ép cụm chữ rộng hết màn hình để căn giữa mới chuẩn */
-            flex: 1 1 100% !important;
-            text-align: center !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-        }
-
-        .van-ban-chuan h1,
-        .van-ban-chuan p {
-            width: 100% !important;
-            text-align: center !important;
-            margin-left: 0 !important;
-        }
-
-        /* 3. Đảm bảo ảnh co giãn và giữ tỉ lệ */
-        .show-ct1 img,
-        .show-ct2 img {
-            width: 100% !important;
-            max-width: 100% !important;
-            height: auto !important;
-            aspect-ratio: 1/1 !important;
-            flex: none !important;
-        }
-
-        .thanh-menu {
-            padding: 0 20px !important;
-            /* Căn đều 2 bên lề 20px */
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            /* Height giữ nguyên theo code cũ của anh */
-        }
-
-        .menu-link {
-            display: none !important;
-            /* Ẩn các đề mục: Sản phẩm, Dự án... */
-        }
-
-        .search-box {
-            display: block !important;
-            /* Giữ lại kính lúp */
-        }
+        font-size: 30px;
     }
 </style>
 
@@ -547,12 +394,8 @@
             </div>
         </div>
         <div class="cum-dieu-huong">
-            <button class="nut-tron nut-dieu-huong-trai">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </button>
-            <button class="nut-tron nut-dieu-huong-phai">
-                <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
+            <button class="nut-tron nut-dieu-huong-trai">&larr;</button>
+            <button class="nut-tron nut-dieu-huong-phai">&rarr;</button>
         </div>
     </div>
     <div class="highlight">
@@ -588,61 +431,12 @@
                 </div>
             </div>
         </div>
-        <div class="cum-dieu-huong">
-            <button class="nut-tron nut-dieu-huong-trai">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </button>
-            <button class="nut-tron nut-dieu-huong-phai">
-                <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-        </div>
+
     </div>
     <div class="footer">
-        <div class="footer_ong">
-            <div class="logo">AN GIA</div>
-            <div class="footer-cha_all_head">
-                <div class="footer_cha_1">
-                    <div class="link-footer">
-                        <a href="#">Về chúng tôi</a>
-                        <a href="#">Hệ thống Showroom</a>
-                        <a href="#">Dự án tiêu biểu</a>
-                        <a href="#">Tuyển dụng</a>
-                    </div>
-                </div>
-                <div class="footer_cha_2">
-                    <div class="link-footer">
-                        <a href="#">Hướng dẫn thi công</a>
-                        <a href="#">Chính sách bảo hành</a>
-                        <a href="#">Tư vấn kỹ thuật</a>
-                        <a href="#">Catalog sản phẩm</a>
-                    </div>
-                </div>
-                <div class="footer_cha_3">
-                    <div class="link-footer">
-                        <a href="#">Địa chỉ Showroom</a>
-                        <a href="#">Hotline hỗ trợ</a>
-                        <a href="#">Email báo giá</a>
-                        <a href="#">Giờ làm việc</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-cha_right"></div>
-        </div>
-        <hr class="duong-ke">
-        <div class="footer_ong_down">
-            <div class="footer-cha_all_down">
-                <div class="cum-van-ban">
-                    <div class="van-ban-ps">
-                        <p>Registered office: Via Canaletto 24, 41042 Fiorano Modenese. — Companies Register of
-                            Modena No. 01265320364. — Share Capital fully paid-up Euro 50,000,000 VAT No./Tax Code
-                            01265320364 — Copyright © 2025 Florim Ceramiche S.p.A. SB sole shareholder company.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
     </div>
+
 </body>
 
 </html>
